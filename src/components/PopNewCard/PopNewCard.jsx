@@ -13,8 +13,8 @@ const PopNewCard = () => {
               &#10006;
             </a>
             <div className="pop-new-card__wrap">
-              <Calendar />
               <NewCardForm />
+              <Calendar />
             </div>
             <div className="pop-new-card__categories categories">
               <p className="categories__p subttl">Категория</p>
