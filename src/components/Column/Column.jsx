@@ -1,6 +1,6 @@
 import Card from '../Card/Card';
 
-const Column = ({ title, cards }) => {
+const Column = ({ title, cards, onOpenPopBrowse }) => {
   return (
     <div className="main__column column">
       <div className="column__title">
@@ -14,6 +14,7 @@ const Column = ({ title, cards }) => {
             title={card.title}
             date={card.date}
             btnHref={card.btnHref}
+            onOpenPopBrowse={onOpenPopBrowse}
           />
         ))}
       </div>

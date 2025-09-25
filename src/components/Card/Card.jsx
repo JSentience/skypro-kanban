@@ -1,4 +1,4 @@
-const Card = ({ theme, title, date, btnHref }) => {
+const Card = ({ theme, title, date, onOpenPopBrowse }) => {
   return (
     <div className="cards__item">
       <div className="cards__card card">
@@ -6,13 +6,13 @@ const Card = ({ theme, title, date, btnHref }) => {
           <div className={`card__theme ${theme.class}`}>
             <p className={theme.class}>{theme.text}</p>
           </div>
-          <a href={btnHref} target="_self">
+          <div onClick={onOpenPopBrowse} style={{ cursor: 'pointer' }}>
             <div className="card__btn">
               <div></div>
               <div></div>
               <div></div>
             </div>
-          </a>
+          </div>
         </div>
         <div className="card__content">
           <a href="" target="_blank">

@@ -1,6 +1,6 @@
-const PopExit = () => {
+const PopExit = ({ style, onClose }) => {
   return (
-    <div className="pop-exit" id="popExit">
+    <div className="pop-exit" id="popExit" style={style}>
       <div className="pop-exit__container">
         <div className="pop-exit__block">
           <div className="pop-exit__ttl">
@@ -11,8 +11,12 @@ const PopExit = () => {
               <button className="pop-exit__exit-yes _hover01" id="exitYes">
                 <a href="modal/signin.html">Да, выйти</a>
               </button>
-              <button className="pop-exit__exit-no _hover03" id="exitNo">
-                <a href="main.html">Нет, остаться</a>
+              <button
+                className="pop-exit__exit-no _hover03"
+                id="exitNo"
+                onClick={onClose}
+              >
+                <span>Нет, остаться</span>
               </button>
             </div>
           </form>

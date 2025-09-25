@@ -1,8 +1,8 @@
 import './PopBrowse.css';
 
-const PopBrowse = () => {
+const PopBrowse = ({ style, onClose }) => {
   return (
-    <div className="pop-browse" id="popBrowse">
+    <div className="pop-browse" id="popBrowse" style={style}>
       <div className="pop-browse__container">
         <div className="pop-browse__block">
           <div className="pop-browse__content">
@@ -169,8 +169,11 @@ const PopBrowse = () => {
                   <a href="#">Удалить задачу</a>
                 </button>
               </div>
-              <button className="btn-browse__close _btn-bg _hover01">
-                <a href="#">Закрыть</a>
+              <button
+                className="btn-browse__close _btn-bg _hover01"
+                onClick={onClose}
+              >
+                Закрыть
               </button>
             </div>
             <div className="pop-browse__btn-edit _hide">
@@ -188,7 +191,10 @@ const PopBrowse = () => {
                   <a href="#">Удалить задачу</a>
                 </button>
               </div>
-              <button className="btn-edit__close _btn-bg _hover01">
+              <button
+                className="btn-edit__close _btn-bg _hover01"
+                onClick={onClose}
+              >
                 <a href="#">Закрыть</a>
               </button>
             </div>
