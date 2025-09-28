@@ -1,10 +1,17 @@
 const Card = ({ theme, title, date, onOpenPopBrowse }) => {
+  const themeObj = {
+    'Web Design': '_orange',
+    Research: '_green',
+    Copywriting: '_purple',
+  };
+  const themeClass = themeObj[theme] || '';
+
   return (
     <div className="cards__item">
       <div className="cards__card card">
         <div className="card__group">
-          <div className={`card__theme ${theme.class}`}>
-            <p className={theme.class}>{theme.text}</p>
+          <div className={`card__theme ${themeClass}`}>
+            <p className={themeClass}>{theme}</p>
           </div>
           <div onClick={onOpenPopBrowse} style={{ cursor: 'pointer' }}>
             <div className="card__btn">
