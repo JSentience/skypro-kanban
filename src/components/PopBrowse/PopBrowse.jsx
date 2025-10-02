@@ -1,5 +1,3 @@
-import './PopBrowse.css';
-
 const PopBrowse = ({ style, onClose }) => {
   return (
     <div className="pop-browse" id="popBrowse" style={style}>

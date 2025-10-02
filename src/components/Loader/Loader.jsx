@@ -1,13 +1,13 @@
-import './Loader.css';
+import { LoaderStyled, LoaderText } from './Loader.styled';
+
 export const Loader = () => {
   return (
-    <>
-      <div className="loader">
-        <h2>
-          <span className="loader__text">Загрузка, подождите</span>
-        </h2>
-      </div>
-    </>
+    <LoaderStyled>
+      <h2>
+        <LoaderText>Загрузка, подождите</LoaderText>
+      </h2>
+    </LoaderStyled>
   );
 };
+
 export default Loader;

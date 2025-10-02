@@ -1,4 +1,3 @@
-import './PopNewCard.css';
 import Calendar from '../Calendar/Calendar';
 import NewCardForm from '../NewCardForm/NewCardForm';
 

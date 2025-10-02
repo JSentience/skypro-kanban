@@ -1,7 +1,8 @@
-import './Main.css';
-import Column from '../Column/Column';
 import columns from '../../../data';
+import Column from '../Column/Column';
 import Loader from '../Loader/Loader';
+import { Container } from '../Wrapper.styled';
+import { MainBlock, MainContent, MainStyled } from './Main.styled';
 
 const Main = ({ loading, onOpenPopBrowse }) => {
   return (
@@ -9,10 +10,10 @@ const Main = ({ loading, onOpenPopBrowse }) => {
       {loading ? (
         <Loader />
       ) : (
-        <main className="main">
-          <div className="container">
-            <div className="main__block">
-              <div className="main__content">
+        <MainStyled>
+          <Container>
+            <MainBlock>
+              <MainContent>
                 {columns.map((column, index) => (
                   <Column
                     key={index}
@@ -21,10 +22,10 @@ const Main = ({ loading, onOpenPopBrowse }) => {
                     onOpenPopBrowse={onOpenPopBrowse}
                   />
                 ))}
-              </div>
-            </div>
-          </div>
-        </main>
+              </MainContent>
+            </MainBlock>
+          </Container>
+        </MainStyled>
       )}
     </>
   );

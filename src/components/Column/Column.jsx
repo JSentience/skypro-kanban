@@ -1,12 +1,18 @@
 import Card from '../Card/Card';
+import {
+  Cards,
+  ColumnStyled,
+  ColumnTitle,
+  ColumnTitleP,
+} from './Column.styled';
 
 const Column = ({ title, cards, onOpenPopBrowse }) => {
   return (
-    <div className="main__column column">
-      <div className="column__title">
-        <p>{title}</p>
-      </div>
-      <div className="cards">
+    <ColumnStyled className="column">
+      <ColumnTitle>
+        <ColumnTitleP>{title}</ColumnTitleP>
+      </ColumnTitle>
+      <Cards>
         {cards.map((card, index) => (
           <Card
             key={index}
@@ -17,8 +23,8 @@ const Column = ({ title, cards, onOpenPopBrowse }) => {
             onOpenPopBrowse={onOpenPopBrowse}
           />
         ))}
-      </div>
-    </div>
+      </Cards>
+    </ColumnStyled>
   );
 };
 
