@@ -7,7 +7,6 @@ import {
   CardsItem,
   CardTheme,
   CardTitle,
-  GlobalStyles,
 } from './Card.styled';
 
 const Card = ({ theme, title, date, onOpenPopBrowse }) => {
@@ -20,7 +19,6 @@ const Card = ({ theme, title, date, onOpenPopBrowse }) => {
 
   return (
     <>
-      <GlobalStyles />
       <CardsItem>
         <CardsCard>
           <CardGroup>

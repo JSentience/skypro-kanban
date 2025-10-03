@@ -1,11 +1,9 @@
-import { LoaderStyled, LoaderText } from './Loader.styled';
+import { LoaderStyled } from './Loader.styled';
 
 export const Loader = () => {
   return (
     <LoaderStyled>
-      <h2>
-        <LoaderText>Загрузка, подождите</LoaderText>
-      </h2>
+      <h2>Загрузка, подождите</h2>
     </LoaderStyled>
   );
 };
