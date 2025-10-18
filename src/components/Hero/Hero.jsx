@@ -1,10 +1,10 @@
 import columns from '../../../data';
-import Column from '../Column/Column';
+import { Column } from '../Column/Column';
 import Loader from '../Loader/Loader';
 import { Container } from '../Wrapper.styled';
 import { MainBlock, MainContent, MainStyled } from './Main.styled';
 
-const Main = ({ loading, onOpenPopBrowse }) => {
+const Hero = ({ loading, onOpenPopBrowse }) => {
   return (
     <>
       {loading ? (
@@ -31,4 +31,4 @@ const Main = ({ loading, onOpenPopBrowse }) => {
   );
 };
 
-export default Main;
+export default Hero;

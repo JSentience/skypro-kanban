@@ -1,47 +1,64 @@
 import Calendar from '../Calendar/Calendar';
 import NewCardForm from '../NewCardForm/NewCardForm';
+import {
+  PopNewCardMain,
+  PopNewCardContainer,
+  PopNewCardBlock,
+  PopNewCardContent,
+  PopNewCardTitle,
+  PopNewCardClose,
+  PopNewCardWrap,
+  PopNewCardCategories,
+  CategoriesP,
+  CategoriesThemes,
+  CategoriesTheme,
+  CategoriesThemeP,
+  FormNewCreate,
+  Subttl,
+} from './PopNewCard.styled';
 
 const PopNewCard = ({ style, onClose }) => {
   return (
-    <div className="pop-new-card" id="popNewCard" style={style}>
-      <div className="pop-new-card__container">
-        <div className="pop-new-card__block">
-          <div className="pop-new-card__content">
-            <h3 className="pop-new-card__ttl">Создание задачи</h3>
-            <a
-              className="pop-new-card__close"
+    <PopNewCardMain $isActive={true} style={style}>
+      <PopNewCardContainer>
+        <PopNewCardBlock>
+          <PopNewCardContent>
+            <PopNewCardTitle>Создание задачи</PopNewCardTitle>
+            <PopNewCardClose
               onClick={(e) => {
                 e.preventDefault();
                 onClose();
               }}
             >
               &#10006;
-            </a>
-            <div className="pop-new-card__wrap">
+            </PopNewCardClose>
+            <PopNewCardWrap>
               <NewCardForm />
               <Calendar />
-            </div>
-            <div className="pop-new-card__categories categories">
-              <p className="categories__p subttl">Категория</p>
-              <div className="categories__themes">
-                <div className="categories__theme _orange _active-category">
-                  <p className="_orange">Web Design</p>
-                </div>
-                <div className="categories__theme _green">
-                  <p className="_green">Research</p>
-                </div>
-                <div className="categories__theme _purple">
-                  <p className="_purple">Copywriting</p>
-                </div>
-              </div>
-            </div>
-            <button className="form-new__create _hover01" id="btnCreate">
+            </PopNewCardWrap>
+            <PopNewCardCategories>
+              <CategoriesP>
+                <Subttl>Категория</Subttl>
+              </CategoriesP>
+              <CategoriesThemes>
+                <CategoriesTheme $isActive={true}>
+                  <CategoriesThemeP>Web Design</CategoriesThemeP>
+                </CategoriesTheme>
+                <CategoriesTheme>
+                  <CategoriesThemeP>Research</CategoriesThemeP>
+                </CategoriesTheme>
+                <CategoriesTheme>
+                  <CategoriesThemeP>Copywriting</CategoriesThemeP>
+                </CategoriesTheme>
+              </CategoriesThemes>
+            </PopNewCardCategories>
+            <FormNewCreate id="btnCreate">
               Создать задачу
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+            </FormNewCreate>
+          </PopNewCardContent>
+        </PopNewCardBlock>
+      </PopNewCardContainer>
+    </PopNewCardMain>
   );
 };
 

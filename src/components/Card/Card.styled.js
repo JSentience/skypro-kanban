@@ -122,3 +122,8 @@ export const CardDate = styled.div`
     letter-spacing: 0.2px;
   }
 `;
+export const CardDescriptionId = styled.div`
+  padding: 8px;
+  font-size: 12px;
+  color: #94a6be;
+`;

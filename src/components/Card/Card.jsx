@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import {
   CardBtn,
   CardContent,
   CardDate,
+  CardDescriptionId,
   CardGroup,
   CardsCard,
   CardsItem,
@@ -9,7 +11,9 @@ import {
   CardTitle,
 } from './Card.styled';
 
-const Card = ({ theme, title, date, onOpenPopBrowse }) => {
+export const Card = ({ theme, title, date, id }) => {
+  const navigate = useNavigate();
+
   const themeObj = {
     'Web Design': '_orange',
     Research: '_green',
@@ -17,60 +21,68 @@ const Card = ({ theme, title, date, onOpenPopBrowse }) => {
   };
   const themeClass = themeObj[theme] || '';
 
+  const handleCardClick = (e) => {
+    e.preventDefault();
+    if (id) {
+      navigate(`/card/${id}`);
+    }
+  };
+  const handleCardClickPopBrowse = (e) => {
+    e.preventDefault();
+    navigate('/pop-browse');
+  };
+
   return (
-    <>
-      <CardsItem>
-        <CardsCard>
-          <CardGroup>
-            <CardTheme className={themeClass}>
-              <p className={themeClass}>{theme}</p>
-            </CardTheme>
-            <CardBtn onClick={onOpenPopBrowse}>
-              <div></div>
-              <div></div>
-              <div></div>
-            </CardBtn>
-          </CardGroup>
-          <CardContent>
-            <a href="" target="_blank">
-              <CardTitle>{title}</CardTitle>
-            </a>
-            <CardDate>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="13"
-                height="13"
-                viewBox="0 0 13 13"
-                fill="none"
-              >
-                <g clipPath="url(#clip0_1_415)">
-                  <path
-                    d="M10.5625 2.03125H2.4375C1.7644 2.03125 1.21875 2.5769 1.21875 3.25V10.5625C1.21875 11.2356 1.7644 11.7812 2.4375 11.7812H10.5625C11.2356 11.7812 11.7812 11.2356 11.7812 10.5625V3.25C11.7812 2.5769 11.2356 2.03125 10.5625 2.03125Z"
-                    stroke="#94A6BE"
-                    strokeWidth="0.8"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M11.7812 4.0625H1.21875M3.25 1.21875V2.03125V1.21875ZM9.75 1.21875V2.03125V1.21875Z"
-                    stroke="#94A6BE"
-                    strokeWidth="0.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_1_415">
-                    <rect width="13" height="13" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
-              <p>{date}</p>
-            </CardDate>
-          </CardContent>
-        </CardsCard>
-      </CardsItem>
-    </>
+    <CardsItem>
+      <CardsCard>
+        <CardGroup>
+          <CardTheme className={themeClass}>
+            <p className={themeClass}>{theme}</p>
+          </CardTheme>
+          <CardBtn onClick={handleCardClickPopBrowse}>
+            <div></div>
+            <div></div>
+            <div></div>
+          </CardBtn>
+        </CardGroup>
+        <CardContent>
+          <a onClick={handleCardClick}>
+            <CardTitle>{title}</CardTitle>
+          </a>
+          <CardDate>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="13"
+              viewBox="0 0 13 13"
+              fill="none"
+            >
+              <g clipPath="url(#clip0_1_415)">
+                <path
+                  d="M10.5625 2.03125H2.4375C1.7644 2.03125 1.21875 2.5769 1.21875 3.25V10.5625C1.21875 11.2356 1.7644 11.7812 2.4375 11.7812H10.5625C11.2356 11.7812 11.7812 11.2356 11.7812 10.5625V3.25C11.7812 2.5769 11.2356 2.03125 10.5625 2.03125Z"
+                  stroke="#94A6BE"
+                  strokeWidth="0.8"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M11.7812 4.0625H1.21875M3.25 1.21875V2.03125V1.21875ZM9.75 1.21875V2.03125V1.21875Z"
+                  stroke="#94A6BE"
+                  strokeWidth="0.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_1_415">
+                  <rect width="13" height="13" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+            <p>{date}</p>
+          </CardDate>
+        </CardContent>
+        {id && <CardDescriptionId>ID: {id}</CardDescriptionId>}
+      </CardsCard>
+    </CardsItem>
   );
 };
-
-export default Card;

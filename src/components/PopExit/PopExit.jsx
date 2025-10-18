@@ -7,8 +7,18 @@ import {
   PopExitStyled,
   PopExitTtl,
 } from './PopExit.styled';
+import { useNavigate } from 'react-router-dom';
 
-const PopExit = ({ style, onClose }) => {
+const PopExit = ({ style, onClose, onLogout }) => {
+  const navigate = useNavigate();
+  const handleLogout = (e) => {
+    e.preventDefault();
+    navigate('/signin');
+    if (onLogout) {
+      onLogout();
+    }
+  };
+
   return (
     <PopExitStyled style={style} id="popExit">
       <PopExitContainer>
@@ -16,10 +26,10 @@ const PopExit = ({ style, onClose }) => {
           <PopExitTtl>
             <h2>Выйти из аккаунта?</h2>
           </PopExitTtl>
-          <form id="formExit" action="#">
+          <form action="#">
             <PopExitFormGroup>
-              <PopExitExitYes id="exitYes">
-                <a href="modal/signin.html">Да, выйти</a>
+              <PopExitExitYes onClick={handleLogout}>
+                <span>Да, выйти</span>
               </PopExitExitYes>
               <PopExitExitNo id="exitNo" onClick={onClose}>
                 <span>Нет, остаться</span>
