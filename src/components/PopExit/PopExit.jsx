@@ -20,7 +20,7 @@ const PopExit = ({ style, onClose, onLogout }) => {
   };
 
   return (
-    <PopExitStyled style={style} id="popExit">
+    <PopExitStyled style={style}>
       <PopExitContainer>
         <PopExitBlock>
           <PopExitTtl>

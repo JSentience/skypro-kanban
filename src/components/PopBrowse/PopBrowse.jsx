@@ -91,10 +91,10 @@ const PopBrowse = ({ onClose, isActive, isEditMode }) => {
             <PopBrowseBtnBrowse>
               <BtnGroup>
                 <BtnBrowseEdit>
-                  <a href="#">Редактировать задачу</a>
+                  <p>Редактировать задачу</p>
                 </BtnBrowseEdit>
                 <BtnBrowseDelete>
-                  <a href="#">Удалить задачу</a>
+                  <p>Удалить задачу</p>
                 </BtnBrowseDelete>
               </BtnGroup>
               <BtnBrowseClose onClick={onClose}>Закрыть</BtnBrowseClose>

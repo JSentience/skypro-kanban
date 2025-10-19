@@ -376,6 +376,7 @@ export const BtnGroup = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
+  gap: 15px;
 
   @media screen and (max-width: 495px) {
     width: 100%;
@@ -391,9 +392,13 @@ export const BtnBrowseEdit = styled.button`
   outline: none;
   background: transparent;
   color: #565eef;
+  &:hover {
+    background-color: #33399b;
+    color: #ffffff;
 
-  a {
-    color: #565eef;
+    p {
+      color: #ffffff;
+    }
   }
 
   @media screen and (max-width: 495px) {
@@ -413,8 +418,13 @@ export const BtnBrowseDelete = styled.button`
   color: #565eef;
   margin-right: 8px;
 
-  a {
-    color: #565eef;
+  &:hover {
+    background-color: #33399b;
+    color: #ffffff;
+
+    p {
+      color: #ffffff;
+    }
   }
 
   @media screen and (max-width: 495px) {
@@ -432,6 +442,14 @@ export const BtnBrowseClose = styled.button`
   border: none;
   outline: none;
   color: #ffffff;
+  &:hover {
+    background-color: #33399b;
+    color: #ffffff;
+
+    p {
+      color: #ffffff;
+    }
+  }
 
   @media screen and (max-width: 495px) {
     width: 100%;

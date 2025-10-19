@@ -43,15 +43,11 @@ export const AppRoutes = () => {
       <Route
         path="/"
         element={
-          isAuth ? (
-            <MainPage
-              loading={loading}
-              onOpenPopBrowse={handleOpenPopBrowse}
-              onLogout={handleLogout}
-            />
-          ) : (
-            <Navigate to="/signin" replace />
-          )
+          <MainPage
+            loading={loading}
+            onOpenPopBrowse={handleOpenPopBrowse}
+            onLogout={handleLogout}
+          />
         }
       >
         <Route

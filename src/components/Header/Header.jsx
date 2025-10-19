@@ -53,6 +53,10 @@ export const Header = ({ onLogout }) => {
   const handleClosePopNewCard = () => {
     setPopNewCard(false);
   };
+  const handlePopUserExit = (e) => {
+    e.preventDefault();
+    navigate('/pop-exit');
+  };
 
   return (
     <>
@@ -95,10 +99,10 @@ export const Header = ({ onLogout }) => {
                   </PopUserSetTheme>
                   <PopUserSetButton
                     type="button"
-                    data-hover03
                     onClick={() => {
                       setLogOut(!logOut);
                       setUserMenuOpen(!userMenuOpen);
+                      handlePopUserExit();
                     }}
                   >
                     Выйти
@@ -110,7 +114,11 @@ export const Header = ({ onLogout }) => {
         </Container>
       </HeaderStyled>
       {logOut && (
-        <PopExit onClose={handleClosePopExit} onLogout={onLogout} style={{ display: 'block' }} />
+        <PopExit
+          onClose={handleClosePopExit}
+          onLogout={onLogout}
+          style={{ display: 'block' }}
+        />
       )}
       {popNewCard && (
         <PopNewCard

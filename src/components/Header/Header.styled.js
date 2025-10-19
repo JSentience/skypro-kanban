@@ -183,6 +183,8 @@ export const PopUserSetButton = styled.button`
   }
 
   a {
+    width: 72px;
+    height: 30px;
     color: #565eef;
   }
 `;
