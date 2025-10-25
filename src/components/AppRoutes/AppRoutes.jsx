@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { MainPage } from '../../pages/MainPage';
 import { useEffect, useState } from 'react';
 import { PopExitPage } from '../../pages/PopExitPage';
@@ -8,6 +8,7 @@ import { SignInPage } from '../../pages/SignInPage';
 import { SignUpPage } from '../../pages/SignUpPage';
 import { PopBrowsePage } from '../../pages/PopBrowsePage';
 import { NewCardPage } from '../../pages/NewCardPage';
+import { PrivatePages } from '../../pages/AuthPage';
 
 export const AppRoutes = () => {
   const [loading, setLoading] = useState(true);
@@ -40,57 +41,45 @@ export const AppRoutes = () => {
 
   return (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <MainPage
-            loading={loading}
-            onOpenPopBrowse={handleOpenPopBrowse}
-            onLogout={handleLogout}
-          />
-        }
-      >
+      <Route element={<PrivatePages isAuth={isAuth} />}>
         <Route
-          path="pop-browse"
+          path="/"
           element={
-            isAuth ? (
+            <MainPage
+              loading={loading}
+              onOpenPopBrowse={handleOpenPopBrowse}
+              onLogout={handleLogout}
+            />
+          }
+        >
+          <Route
+            path="pop-browse"
+            element={
               <PopBrowsePage
                 onClose={handleClosePopBrowse}
                 isActive={true}
                 isEditMode={false}
               />
-            ) : (
-              <Navigate to="/signin" replace />
-            )
-          }
-        />
-        <Route
-          path="pop-exit"
-          element={
-            isAuth ? (
-              <PopExitPage setIsAuth={setIsAuth} />
-            ) : (
-              <Navigate to="/signin" replace />
-            )
-          }
-        />
-        <Route
-          path="new-card"
-          element={
-            isAuth ? (
-              <NewCardPage setIsAuth={setIsAuth} />
-            ) : (
-              <Navigate to="/signin" replace />
-            )
-          }
-        />
+            }
+          />
+          <Route
+            path="pop-exit"
+            element={<PopExitPage setIsAuth={setIsAuth} />}
+          />
+          <Route
+            path="new-card"
+            element={<NewCardPage setIsAuth={setIsAuth} />}
+          />
+          <Route
+            path="/card/:id"
+            element={<CardPage onClose={handleClosePopBrowse} />}
+          />
+        </Route>
       </Route>
       <Route path="/signin" element={<SignInPage setIsAuth={setIsAuth} />} />
+
       <Route path="/signup" element={<SignUpPage />} />
-      <Route
-        path="/card/:id"
-        element={isAuth ? <CardPage /> : <Navigate to="/signin" replace />}
-      />
+
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

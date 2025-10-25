@@ -14,17 +14,16 @@ import {
 export const Card = ({ theme, title, date, id }) => {
   const navigate = useNavigate();
 
-  const themeObj = {
-    'Web Design': '_orange',
-    Research: '_green',
-    Copywriting: '_purple',
+  const themeColors = {
+    'Web Design': { bg: '#ffe4c2', text: '#ff6d00' },
+    Research: { bg: '#b4fdd1', text: '#06b16e' },
+    Copywriting: { bg: '#e9d4ff', text: '#9a48f1' },
   };
-  const themeClass = themeObj[theme] || '';
 
   const handleCardClick = (e) => {
     e.preventDefault();
     if (id) {
-      navigate(`/card/${id}`);
+      navigate(`/card/${id}`, { state: { theme } });
     }
   };
   const handleCardClickPopBrowse = (e) => {
@@ -36,8 +35,11 @@ export const Card = ({ theme, title, date, id }) => {
     <CardsItem>
       <CardsCard>
         <CardGroup>
-          <CardTheme className={themeClass}>
-            <p className={themeClass}>{theme}</p>
+          <CardTheme
+            bgColor={themeColors[theme].bg}
+            textColor={themeColors[theme].text}
+          >
+            <p>{theme}</p>
           </CardTheme>
           <CardBtn onClick={handleCardClickPopBrowse}>
             <div></div>

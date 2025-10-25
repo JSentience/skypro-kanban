@@ -1,23 +1,10 @@
-import { useParams } from 'react-router-dom';
-import { Card } from '../components/Card/Card';
-import columns from '../../data';
+import { useParams, useLocation } from 'react-router-dom';
+import CardDesc from '../components/CardDesc/CardDesc';
 
-export const CardPage = () => {
+export const CardPage = ({ onClose }) => {
   const { id } = useParams();
-  const cardId = parseInt(id);
+  const location = useLocation();
+  const theme = location.state && location.state.theme ? location.state.theme : '';
 
-  let cardData = null;
-  for (const column of columns) {
-    const foundCard = column.cards.find((card) => card.id === cardId);
-    if (foundCard) {
-      cardData = foundCard;
-      break;
-    }
-  }
-
-  if (!cardData) {
-    return <div>Карточка не найдена</div>;
-  }
-
-  return <Card {...cardData} />;
+  return <CardDesc id={id} onClose={onClose} theme={theme} />;
 };

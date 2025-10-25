@@ -32,14 +32,14 @@ import {
 } from './PopBrowse.styled.js';
 import Calendar from '../Calendar/Calendar';
 
-const PopBrowse = ({ onClose, isActive, isEditMode }) => {
+const PopBrowse = ({ onClose, isActive, isEditMode, id }) => {
   return (
     <PopBrowseMain $isActive={isActive}>
       <PopBrowseContainer>
         <PopBrowseBlock>
           <PopBrowseContent>
             <PopBrowseTopBlock>
-              <PopBrowseTitle>Название задачи</PopBrowseTitle>
+              <PopBrowseTitle>Название задачи № {id}</PopBrowseTitle>
               <CategoriesTheme $isActive={true}>
                 <CategoriesThemeP>Web Design</CategoriesThemeP>
               </CategoriesTheme>
