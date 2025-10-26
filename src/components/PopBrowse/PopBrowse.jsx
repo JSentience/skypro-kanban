@@ -32,7 +32,14 @@ import {
 } from './PopBrowse.styled.js';
 import Calendar from '../Calendar/Calendar';
 
-const PopBrowse = ({ onClose, isActive, isEditMode, id }) => {
+const PopBrowse = ({ onClose, isActive, isEditMode, id , theme}) => {
+  const themeColors = {
+    'Web Design': { bg: '#ffe4c2', text: '#ff6d00' },
+    Research: { bg: '#b4fdd1', text: '#06b16e' },
+    Copywriting: { bg: '#e9d4ff', text: '#9a48f1' },
+  };
+
+  const currentThemeColors = themeColors[theme] || { bg: '', text: '' };
   return (
     <PopBrowseMain $isActive={isActive}>
       <PopBrowseContainer>
@@ -40,14 +47,12 @@ const PopBrowse = ({ onClose, isActive, isEditMode, id }) => {
           <PopBrowseContent>
             <PopBrowseTopBlock>
               <PopBrowseTitle>Название задачи № {id}</PopBrowseTitle>
-              <CategoriesTheme $isActive={true}>
-                <CategoriesThemeP>Web Design</CategoriesThemeP>
+              <CategoriesTheme $isActive={true} $bgColor={currentThemeColors.bg} $textColor={currentThemeColors.text}>
+                <CategoriesThemeP>{theme}</CategoriesThemeP>
               </CategoriesTheme>
             </PopBrowseTopBlock>
             <Status>
-              <StatusP>
-                <Subttl>Статус</Subttl>
-              </StatusP>
+              <StatusP>Статус</StatusP>
               <StatusThemes>
                 <StatusTheme $isHidden={false}>
                   <StatusThemeP>Без статуса</StatusThemeP>
@@ -82,10 +87,10 @@ const PopBrowse = ({ onClose, isActive, isEditMode, id }) => {
             </PopBrowseWrap>
             <ThemeDownCategories>
               <CategoriesP>
-                <Subttl>Категория</Subttl>
+                Категория
               </CategoriesP>
-              <CategoriesTheme $isActive={true}>
-                <CategoriesThemeP>Web Design</CategoriesThemeP>
+              <CategoriesTheme $isActive={true} $bgColor={currentThemeColors.bg} $textColor={currentThemeColors.text}>
+                <CategoriesThemeP>{theme}</CategoriesThemeP>
               </CategoriesTheme>
             </ThemeDownCategories>
             <PopBrowseBtnBrowse>

@@ -1,20 +1,19 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import {
-  CalendarContainer,
-  CalendarTtl,
   CalendarBlock,
-  CalendarMonth,
-  CalendarContent,
-  CalendarDaysNames,
-  CalendarDayName,
-  CalendarCells,
   CalendarCell,
+  CalendarCells,
+  CalendarContainer,
+  CalendarContent,
+  CalendarDayName,
+  CalendarDaysNames,
+  CalendarMonth,
   CalendarNav,
-  NavActions,
-  NavAction,
-  CalendarPeriod,
   CalendarP,
-  Subttl,
+  CalendarPeriod,
+  CalendarTtl,
+  NavAction,
+  NavActions,
 } from './Calendar.styled';
 
 const months = [
@@ -101,9 +100,7 @@ const Calendar = ({ onDateSelect }) => {
 
   return (
     <CalendarContainer>
-      <CalendarTtl>
-        <Subttl>Даты</Subttl>
-      </CalendarTtl>
+      <CalendarTtl>Даты</CalendarTtl>
       <CalendarBlock>
         <CalendarNav>
           <CalendarMonth>

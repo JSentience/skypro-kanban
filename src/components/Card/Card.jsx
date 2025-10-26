@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {
   CardBtn,
   CardContent,
@@ -28,16 +28,18 @@ export const Card = ({ theme, title, date, id }) => {
   };
   const handleCardClickPopBrowse = (e) => {
     e.preventDefault();
-    navigate('/pop-browse');
+    navigate(`/pop-browse/${id}`, { state: { theme } });
   };
+
+  const currentThemeColors = themeColors[theme] || { bg: '', text: '' };
 
   return (
     <CardsItem>
       <CardsCard>
         <CardGroup>
           <CardTheme
-            bgColor={themeColors[theme].bg}
-            textColor={themeColors[theme].text}
+            $bgColor={currentThemeColors.bg}
+            $textColor={currentThemeColors.text}
           >
             <p>{theme}</p>
           </CardTheme>

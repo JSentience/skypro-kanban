@@ -12,9 +12,8 @@ import {
   PopCardMain,
   PopCardTitle,
   PopCardWrap,
-  Subttl,
 } from './CardDesc.styled';
-import { CardForm } from '../CardForm/CardForm';
+import {CardForm} from '../CardForm/CardForm';
 
 const CardDesc = ({ style, onClose, id, theme }) => {
   const themeColors = {
@@ -22,6 +21,7 @@ const CardDesc = ({ style, onClose, id, theme }) => {
     Research: { bg: '#b4fdd1', text: '#06b16e' },
     Copywriting: { bg: '#e9d4ff', text: '#9a48f1' },
   };
+  const currentThemeColors = themeColors[theme] || { bg: '', text: '' };
   return (
     <PopCardMain $isActive={true} style={style}>
       <PopCardContainer>
@@ -42,16 +42,28 @@ const CardDesc = ({ style, onClose, id, theme }) => {
             </PopCardWrap>
             <PopCardCategories>
               <CategoriesP>
-                <Subttl>Категория</Subttl>
+                Категория
               </CategoriesP>
               <CategoriesThemes>
-                <CategoriesTheme $isActive={theme === 'Web Design'} bgColor={themeColors['Web Design'].bg} textColor={themeColors['Web Design'].text}>
+                <CategoriesTheme
+                  $isActive={theme === 'Web Design'}
+                  $bgColor={currentThemeColors.bg}
+                  $textColor={currentThemeColors.text}
+                >
                   <CategoriesThemeP>Web Design</CategoriesThemeP>
                 </CategoriesTheme>
-                <CategoriesTheme $isActive={theme === 'Research'} bgColor={themeColors.Research.bg} textColor={themeColors.Research.text}>
+                <CategoriesTheme
+                  $isActive={theme === 'Research'}
+                  $bgColor={currentThemeColors.bg}
+                  $textColor={currentThemeColors.text}
+                >
                   <CategoriesThemeP>Research</CategoriesThemeP>
                 </CategoriesTheme>
-                <CategoriesTheme $isActive={theme === 'Copywriting'} bgColor={themeColors.Copywriting.bg} textColor={themeColors.Copywriting.text}>
+                <CategoriesTheme
+                  $isActive={theme === 'Copywriting'}
+                  $bgColor={currentThemeColors.bg}
+                  $textColor={currentThemeColors.text}
+                >
                   <CategoriesThemeP>Copywriting</CategoriesThemeP>
                 </CategoriesTheme>
               </CategoriesThemes>

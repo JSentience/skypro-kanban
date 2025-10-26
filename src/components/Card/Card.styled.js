@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { animation } from '../Animation.styled.js';
+import {animation} from '../Animation.styled.js';
 
 export const CardsItem = styled.div`
   padding: 5px;
@@ -44,8 +44,8 @@ export const CardTheme = styled.div`
   height: 20px;
   padding: 5px 14px;
   border-radius: 18px;
-  background-color: ${(props) => props.bgColor};
-  color: ${(props) => props.textColor};
+  background-color: ${(props) => props.$bgColor || ''};
+  color: ${(props) => props.$textColor || ''};
   p {
     font-size: 10px;
     font-weight: 600;

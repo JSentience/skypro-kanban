@@ -1,20 +1,19 @@
 import Calendar from '../Calendar/Calendar';
 import NewCardForm from '../NewCardForm/NewCardForm';
 import {
-  PopNewCardMain,
-  PopNewCardContainer,
-  PopNewCardBlock,
-  PopNewCardContent,
-  PopNewCardTitle,
-  PopNewCardClose,
-  PopNewCardWrap,
-  PopNewCardCategories,
   CategoriesP,
-  CategoriesThemes,
   CategoriesTheme,
   CategoriesThemeP,
+  CategoriesThemes,
   FormNewCreate,
-  Subttl,
+  PopNewCardBlock,
+  PopNewCardCategories,
+  PopNewCardClose,
+  PopNewCardContainer,
+  PopNewCardContent,
+  PopNewCardMain,
+  PopNewCardTitle,
+  PopNewCardWrap,
 } from './PopNewCard.styled';
 
 const PopNewCard = ({ style, onClose }) => {
@@ -38,7 +37,7 @@ const PopNewCard = ({ style, onClose }) => {
             </PopNewCardWrap>
             <PopNewCardCategories>
               <CategoriesP>
-                <Subttl>Категория</Subttl>
+                Категория
               </CategoriesP>
               <CategoriesThemes>
                 <CategoriesTheme $isActive={true}>

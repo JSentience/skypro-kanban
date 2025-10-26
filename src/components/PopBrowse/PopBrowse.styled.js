@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const PopBrowseMain = styled.div`
   display: none;
@@ -88,7 +88,11 @@ export const Status = styled.div`
 `;
 
 export const StatusP = styled.p`
-  margin-bottom: 14px;
+    margin-bottom: 14px;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
 `;
 
 export const StatusThemes = styled.div`
@@ -338,17 +342,23 @@ export const ThemeDownCategories = styled.div`
 `;
 
 export const CategoriesP = styled.p`
-  margin-bottom: 14px;
+    margin-bottom: 14px;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
 `;
 
 export const CategoriesTheme = styled.div`
-  display: inline-block;
-  width: auto;
-  height: 30px;
-  padding: 8px 20px;
-  border-radius: 24px;
-  margin-right: 7px;
-  opacity: 0.4;
+    display: inline-block;
+    width: auto;
+    height: 30px;
+    padding: 8px 20px;
+    border-radius: 24px;
+    margin-right: 7px;
+    opacity: 0.4;
+    background-color: ${(props) => props.$bgColor};
+    color: ${(props) => props.$textColor};
 
   ${(props) =>
     props.$isActive &&

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const CalendarContainer = styled.div`
   width: 182px;
@@ -11,8 +11,13 @@ export const CalendarContainer = styled.div`
 `;
 
 export const CalendarTtl = styled.p`
-  margin-bottom: 14px;
-  padding: 0 7px;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 14px;
+    padding: 0 7px;
+    
 `;
 
 export const CalendarBlock = styled.div`
@@ -151,8 +156,5 @@ export const CalendarP = styled.p`
 `;
 
 export const Subttl = styled.p`
-  color: #000;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
+  
 `;

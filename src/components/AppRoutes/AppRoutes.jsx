@@ -1,18 +1,18 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import { MainPage } from '../../pages/MainPage';
-import { useEffect, useState } from 'react';
-import { PopExitPage } from '../../pages/PopExitPage';
-import { CardPage } from '../../pages/CardPage';
-import { NotFoundPage } from '../../pages/NotFoundPage';
-import { SignInPage } from '../../pages/SignInPage';
-import { SignUpPage } from '../../pages/SignUpPage';
-import { PopBrowsePage } from '../../pages/PopBrowsePage';
-import { NewCardPage } from '../../pages/NewCardPage';
-import { PrivatePages } from '../../pages/AuthPage';
+import {Route, Routes, useNavigate} from 'react-router-dom';
+import {MainPage} from '../../pages/MainPage';
+import {useEffect, useState} from 'react';
+import {PopExitPage} from '../../pages/PopExitPage';
+import {CardPage} from '../../pages/CardPage';
+import {NotFoundPage} from '../../pages/NotFoundPage';
+import {SignInPage} from '../../pages/SignInPage';
+import {SignUpPage} from '../../pages/SignUpPage';
+import {PopBrowsePage} from '../../pages/PopBrowsePage';
+import {NewCardPage} from '../../pages/NewCardPage';
+import {PrivatePages} from '../../pages/AuthPage';
 
 export const AppRoutes = () => {
   const [loading, setLoading] = useState(true);
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,11 +22,10 @@ export const AppRoutes = () => {
   }, []);
 
   useEffect(() => {
-    console.log('Auth state changed:', isAuth);
+    console.log('Авторизация:', isAuth);
   }, [isAuth]);
 
   const handleLogout = () => {
-    console.log('Global logout called');
     setIsAuth(false);
   };
 
@@ -53,7 +52,7 @@ export const AppRoutes = () => {
           }
         >
           <Route
-            path="pop-browse"
+            path="pop-browse/:id"
             element={
               <PopBrowsePage
                 onClose={handleClosePopBrowse}

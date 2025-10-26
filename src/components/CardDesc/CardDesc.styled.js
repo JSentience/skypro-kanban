@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const PopCardMain = styled.div`
   display: none;
@@ -95,7 +95,11 @@ export const PopCardCategories = styled.div`
 `;
 
 export const CategoriesP = styled.p`
-  margin-bottom: 14px;
+    margin-bottom: 14px;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
 `;
 
 export const CategoriesThemes = styled.div`
@@ -113,8 +117,8 @@ export const CategoriesTheme = styled.div`
   border-radius: 24px;
   margin-right: 7px;
   opacity: 0.1;
-  background-color: ${(props) => props.bgColor};
-  color: ${(props) => props.textColor};
+  background-color: ${(props) => props.$bgColor};
+  color: ${(props) => props.$textColor};
 
   ${(props) =>
     props.$isActive &&

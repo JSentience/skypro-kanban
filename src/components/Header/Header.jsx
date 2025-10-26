@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import PopExit from '../PopExit/PopExit';
 import PopNewCard from '../PopNewCard/PopNewCard';
-import { Container } from '../Wrapper.styled';
+import {Container} from '../Wrapper.styled';
 import {
   HeaderBlock,
   HeaderBtnMainNew,
@@ -15,7 +15,7 @@ import {
   PopUserSetName,
   PopUserSetTheme,
 } from './Header.styled';
-import { Link, useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 export const Header = ({ onLogout }) => {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
@@ -53,8 +53,7 @@ export const Header = ({ onLogout }) => {
   const handleClosePopNewCard = () => {
     setPopNewCard(false);
   };
-  const handlePopUserExit = (e) => {
-    e.preventDefault();
+  const handlePopUserExit = () => {
     navigate('/pop-exit');
   };
 
