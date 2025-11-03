@@ -1,4 +1,4 @@
-import Card from '../Card/Card';
+import { Card } from '../Card/Card';
 import {
   Cards,
   ColumnStyled,
@@ -6,9 +6,9 @@ import {
   ColumnTitleP,
 } from './Column.styled';
 
-const Column = ({ title, cards, onOpenPopBrowse }) => {
+export const Column = ({ title, cards, onOpenPopBrowse }) => {
   return (
-    <ColumnStyled className="column">
+    <ColumnStyled>
       <ColumnTitle>
         <ColumnTitleP>{title}</ColumnTitleP>
       </ColumnTitle>
@@ -19,7 +19,7 @@ const Column = ({ title, cards, onOpenPopBrowse }) => {
             theme={card.theme}
             title={card.title}
             date={card.date}
-            btnHref={card.btnHref}
+            id={card.id}
             onOpenPopBrowse={onOpenPopBrowse}
           />
         ))}
@@ -27,5 +27,3 @@ const Column = ({ title, cards, onOpenPopBrowse }) => {
     </ColumnStyled>
   );
 };
-
-export default Column;

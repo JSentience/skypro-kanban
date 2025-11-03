@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import PopExit from '../PopExit/PopExit';
 import PopNewCard from '../PopNewCard/PopNewCard';
-import { Container } from '../wrapper.styled';
+import {Container} from '../Wrapper.styled';
 import {
   HeaderBlock,
   HeaderBtnMainNew,
@@ -15,11 +15,14 @@ import {
   PopUserSetName,
   PopUserSetTheme,
 } from './Header.styled';
+import {Link, useNavigate} from 'react-router-dom';
 
-export const Header = () => {
+export const Header = ({ onLogout }) => {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [logOut, setLogOut] = useState(false);
   const [popNewCard, setPopNewCard] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOut = (event) => {
@@ -38,12 +41,20 @@ export const Header = () => {
     };
   }, []);
 
+  const handleClickNew = (e) => {
+    e.preventDefault();
+    navigate('/new-card');
+  };
+
   const handleClosePopExit = () => {
     setLogOut(false);
   };
 
   const handleClosePopNewCard = () => {
     setPopNewCard(false);
+  };
+  const handlePopUserExit = () => {
+    navigate('/pop-exit');
   };
 
   return (
@@ -57,18 +68,12 @@ export const Header = () => {
               </a>
             </HeaderLogo>
             <HeaderLogo className="_dark" data-header-logo>
-              <a href="#" target="_self">
+              <Link to="/" target="_self">
                 <img src="/images/logo_dark.png" alt="logo" />
-              </a>
+              </Link>
             </HeaderLogo>
             <HeaderNav>
-              <HeaderBtnMainNew
-                data-header-btn-main-new
-                id="btnMainNew"
-                onClick={() => {
-                  setPopNewCard(!popNewCard);
-                }}
-              >
+              <HeaderBtnMainNew onClick={handleClickNew}>
                 Создать новую задачу
               </HeaderBtnMainNew>
               <HeaderUser
@@ -93,10 +98,10 @@ export const Header = () => {
                   </PopUserSetTheme>
                   <PopUserSetButton
                     type="button"
-                    data-hover03
                     onClick={() => {
                       setLogOut(!logOut);
                       setUserMenuOpen(!userMenuOpen);
+                      handlePopUserExit();
                     }}
                   >
                     Выйти
@@ -108,7 +113,11 @@ export const Header = () => {
         </Container>
       </HeaderStyled>
       {logOut && (
-        <PopExit onClose={handleClosePopExit} style={{ display: 'block' }} />
+        <PopExit
+          onClose={handleClosePopExit}
+          onLogout={onLogout}
+          style={{ display: 'block' }}
+        />
       )}
       {popNewCard && (
         <PopNewCard
