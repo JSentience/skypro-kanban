@@ -6,7 +6,7 @@ import {PopExitPage} from '../../pages/PopExitPage';
 import {NotFoundPage} from '../../pages/NotFoundPage';
 import {SignInPage} from '../../pages/SignInPage';
 import {SignUpPage} from '../../pages/SignUpPage';
-import {PopBrowsePage} from '../../pages/PopBrowsePage';
+import {CardPage} from '../../pages/CardPage';
 import {NewCardPage} from '../../pages/NewCardPage';
 import {PrivatePages} from '../../pages/AuthPage';
 import {getToken, getUser} from '../../services/api';
@@ -84,17 +84,18 @@ export const AppRoutes = () => {
           path="new-card"
           element={<NewCardPage onTaskCreated={() => navigate('/')} />}
         />
+          <Route
+            path="/pop-browse/:id"
+            element={
+              <CardPage
+                onClose={handleClosePopBrowse}
+                isActive={true}
+              />
+            }
+          />
 
         </Route>
-        <Route
-          path="/pop-browse/:id"
-          element={
-            <PopBrowsePage
-              onClose={handleClosePopBrowse}
-              isActive={true}
-            />
-          }
-        />
+
 
       </Route>
       <Route path="/signin" element={<SignInPage setIsAuth={setIsAuth} />} />
