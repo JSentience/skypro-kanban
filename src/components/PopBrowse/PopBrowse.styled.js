@@ -109,6 +109,14 @@ export const StatusTheme = styled.div`
   padding: 11px 14px 10px;
   margin-right: 7px;
   margin-bottom: 7px;
+  cursor: pointer;
+
+  ${(props) =>
+    props.$isActive &&
+    css`
+      background-color: #94a6be;
+      color: #ffffff;
+    `}
 
   ${(props) =>
     props.$isHidden &&

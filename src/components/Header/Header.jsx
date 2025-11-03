@@ -17,7 +17,7 @@ import {
 } from './Header.styled';
 import {Link, useNavigate} from 'react-router-dom';
 
-export const Header = ({ onLogout }) => {
+export const Header = ({ onLogout , user}) => {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [logOut, setLogOut] = useState(false);
   const [popNewCard, setPopNewCard] = useState(false);
@@ -82,12 +82,12 @@ export const Header = ({ onLogout }) => {
                   setUserMenuOpen(!userMenuOpen);
                 }}
               >
-                Ivan Ivanov
+                {user?.name || 'Пользователь'}
               </HeaderUser>
               {userMenuOpen && (
                 <HeaderPopUserSet data-header-pop-user-set id="user-set-target">
-                  <PopUserSetName>Ivan Ivanov</PopUserSetName>
-                  <PopUserSetMail>ivan.ivanov@gmail.com</PopUserSetMail>
+                  <PopUserSetName>{user?.name || 'Пользователь'}</PopUserSetName>
+                  <PopUserSetMail>{user?.login || 'email@example.com'}</PopUserSetMail>
                   <PopUserSetTheme>
                     <p>Темная тема</p>
                     <input

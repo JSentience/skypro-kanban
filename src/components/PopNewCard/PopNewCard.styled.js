@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const PopNewCardMain = styled.div`
   display: none;
@@ -103,18 +103,25 @@ export const CategoriesThemes = styled.div`
   justify-content: flex-start;
 `;
 
-export const CategoriesTheme = styled.div`
-  display: inline-block;
-  width: auto;
-  height: 30px;
-  padding: 8px 20px;
-  border-radius: 24px;
-  margin-right: 7px;
-  opacity: 0.4;
 
-  ${props => props.$isActive && css`
-    opacity: 1;
-  `}
+
+export const CategoriesTheme = styled.div`
+    display: inline-block;
+    width: auto;
+    height: 30px;
+    padding: 8px 20px;
+    border-radius: 24px;
+    margin-right: 7px;
+    opacity: 0.4;
+    background-color: ${(props) => props.$bgColor};
+    color: ${(props) => props.$textColor};
+    cursor: pointer;
+
+  ${(props) =>
+  props.$isActive &&
+  css`
+      opacity: 1;
+    `}
 `;
 
 export const CategoriesThemeP = styled.p`

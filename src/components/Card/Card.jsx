@@ -22,9 +22,7 @@ export const Card = ({ theme, title, date, id }) => {
 
   const handleCardClick = (e) => {
     e.preventDefault();
-    if (id) {
-      navigate(`/card/${id}`, { state: { theme } });
-    }
+    // Removed navigation to CardPage
   };
   const handleCardClickPopBrowse = (e) => {
     e.preventDefault();

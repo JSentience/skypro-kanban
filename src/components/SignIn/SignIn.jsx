@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { login } from '../../services/api';
 import {
   ContainerSignin,
   Modal,
@@ -16,14 +17,20 @@ import {
 } from './SignIn.styled';
 
 export const SignIn = ({ setIsAuth }) => {
-  const [email, setEmail] = useState('');
+  const [loginValue, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsAuth(true);
-    navigate('/');
+    try {
+      await login(loginValue, password);
+      setIsAuth(true);
+      navigate('/');
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
@@ -35,13 +42,14 @@ export const SignIn = ({ setIsAuth }) => {
               <ModalTtlH2>Вход</ModalTtlH2>
             </ModalTtl>
             <ModalFormLogin id="formLogIn" onSubmit={handleSubmit}>
+              {error && <p style={{ color: 'red' }}>{error}</p>}
               <ModalInput
                 type="text"
                 name="login"
                 id="formlogin"
-                placeholder="Эл. почта"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Логин"
+                value={loginValue}
+                onChange={(e) => setLogin(e.target.value)}
                 required
               />
               <ModalInput

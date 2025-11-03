@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   PopNewCardForm,
   FormNewBlock,
@@ -6,9 +7,18 @@ import {
   Subttl,
 } from './NewCardForm.styled';
 
-const NewCardForm = () => {
+const NewCardForm = ({ onSubmit, error }) => {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit({ title, description });
+  };
+
   return (
-    <PopNewCardForm id="formNewCard" action="#">
+    <PopNewCardForm id="formNewCard" onSubmit={handleSubmit}>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <FormNewBlock>
         <Subttl>Название задачи</Subttl>
         <FormNewInput
@@ -16,7 +26,10 @@ const NewCardForm = () => {
           name="name"
           id="formTitle"
           placeholder="Введите название задачи..."
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
           autoFocus
+          required
         />
       </FormNewBlock>
       <FormNewBlock>
@@ -25,6 +38,8 @@ const NewCardForm = () => {
           name="text"
           id="textArea"
           placeholder="Введите описание задачи..."
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
       </FormNewBlock>
     </PopNewCardForm>
