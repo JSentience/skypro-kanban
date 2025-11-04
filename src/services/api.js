@@ -8,8 +8,8 @@ export const getToken = () => localStorage.getItem('kanbanToken');
 
 export const login = async (login, password) => {
   try {
-    const response = await axios.post(`${AUTH_URL}/login`, { login, password }, {
-      headers: { 'Content-Type': null }
+    const response = await axios.post(`${AUTH_URL}/login`, {login, password}, {
+      headers: {'Content-Type': null}
     });
     localStorage.setItem('kanbanToken', response.data.user.token);
     localStorage.setItem('userName', response.data.user.name);
@@ -23,8 +23,8 @@ export const login = async (login, password) => {
 
 export const register = async (login, password, name) => {
   try {
-    const response = await axios.post(AUTH_URL, { login, password, name }, {
-      headers: { 'Content-Type': null }
+    const response = await axios.post(AUTH_URL, {login, password, name}, {
+      headers: {'Content-Type': null}
     });
     localStorage.setItem('kanbanToken', response.data.user.token);
     localStorage.setItem('userName', response.data.user.name);
@@ -70,7 +70,7 @@ export const createTask = async (taskData) => authRequest({
   method: 'post',
   url: API_URL,
   data: taskData,
-  headers: { 'Content-Type': null }
+  headers: {'Content-Type': null}
 });
 
 
@@ -78,7 +78,7 @@ export const updateTask = async (id, taskData) => authRequest({
   method: 'put',
   url: `${API_URL}/${id}`,
   data: taskData,
-  headers: { 'Content-Type': null }
+  headers: {'Content-Type': null}
 });
 
 
@@ -87,7 +87,7 @@ export const deleteTask = async (id) => authRequest({
   url: `${API_URL}/${id}`
 });
 
-export const getUser= async () => authRequest({
+export const getUser = async () => authRequest({
   method: 'get',
   url: AUTH_URL,
 })

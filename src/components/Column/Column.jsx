@@ -1,12 +1,7 @@
-import { Card } from '../Card/Card';
-import {
-  Cards,
-  ColumnStyled,
-  ColumnTitle,
-  ColumnTitleP,
-} from './Column.styled';
+import {Card} from '../Card/Card';
+import {Cards, ColumnStyled, ColumnTitle, ColumnTitleP,} from './Column.styled';
 
-export const Column = ({ title, cards, onOpenPopBrowse }) => {
+export const Column = ({title, cards, onOpenPopBrowse}) => {
   return (
     <ColumnStyled>
       <ColumnTitle>

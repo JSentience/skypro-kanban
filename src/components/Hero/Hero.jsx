@@ -3,9 +3,8 @@ import {Column} from '../Column/Column';
 import Loader from '../Loader/Loader';
 import {Container} from '../Wrapper.styled';
 import {MainBlock, MainContent, MainStyled} from './Main.styled';
-import {updateTask} from '../../services/api';
 
-const Hero = ({ loading, onOpenPopBrowse, fetchTasks: fetchTasksProp }) => {
+const Hero = ({loading, onOpenPopBrowse, fetchTasks: fetchTasksProp}) => {
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState('');
 
@@ -18,7 +17,6 @@ const Hero = ({ loading, onOpenPopBrowse, fetchTasks: fetchTasksProp }) => {
       setError(err.message);
     }
   }, [fetchTasksProp]);
-
 
 
   useEffect(() => {
@@ -50,12 +48,12 @@ const Hero = ({ loading, onOpenPopBrowse, fetchTasks: fetchTasksProp }) => {
   return (
     <>
       {loading ? (
-        <Loader />
+        <Loader/>
       ) : (
         <MainStyled>
           <Container>
             <MainBlock>
-              {error && <p style={{ color: 'red' }}>{error}</p>}
+              {error && <p style={{color: 'red'}}>{error}</p>}
               <MainContent>
                 {columns.map((column, index) => (
                   <Column

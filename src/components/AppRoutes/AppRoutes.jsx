@@ -18,12 +18,10 @@ export const AppRoutes = () => {
   const navigate = useNavigate();
 
 
-
-
   useEffect(() => {
     const loadUser = async () => {
       setIsAuth(!!getToken());
-      if(getToken()) {
+      if (getToken()) {
         let userData = {
           name: localStorage.getItem('userName'),
           login: localStorage.getItem('userLogin')
@@ -64,7 +62,7 @@ export const AppRoutes = () => {
 
   return (
     <Routes>
-      <Route element={<PrivatePages isAuth={isAuth} />}>
+      <Route element={<PrivatePages isAuth={isAuth}/>}>
         <Route
           path="/"
           element={
@@ -78,12 +76,12 @@ export const AppRoutes = () => {
         >
           <Route
             path="pop-exit"
-            element={<PopExitPage setIsAuth={setIsAuth} />}
+            element={<PopExitPage setIsAuth={setIsAuth}/>}
           />
-        <Route
-          path="new-card"
-          element={<NewCardPage onTaskCreated={() => navigate('/')} />}
-        />
+          <Route
+            path="new-card"
+            element={<NewCardPage onTaskCreated={() => navigate('/')}/>}
+          />
           <Route
             path="/pop-browse/:id"
             element={
@@ -98,9 +96,9 @@ export const AppRoutes = () => {
 
 
       </Route>
-      <Route path="/signin" element={<SignInPage setIsAuth={setIsAuth} />} />
-      <Route path="/signup" element={<SignUpPage />} />
-      <Route path="*" element={<NotFoundPage />} />
+      <Route path="/signin" element={<SignInPage setIsAuth={setIsAuth}/>}/>
+      <Route path="/signup" element={<SignUpPage/>}/>
+      <Route path="*" element={<NotFoundPage/>}/>
     </Routes>
   );
 };

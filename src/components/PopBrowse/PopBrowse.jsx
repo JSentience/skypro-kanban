@@ -8,7 +8,6 @@ import {
   BtnEditDelete,
   BtnEditSave,
   BtnGroup,
-  CategoriesP,
   CategoriesTheme,
   CategoriesThemeP,
   FormBrowseArea,
@@ -29,13 +28,12 @@ import {
   StatusThemeP,
   StatusThemes,
   Subttl,
-  ThemeDownCategories,
 } from './PopBrowse.styled.js';
 import Calendar from '../Calendar/Calendar';
 import {deleteTask, fetchTaskById, updateTask} from '../../services/api';
 
 
-const PopBrowse = ({ onClose, isActive, id, theme }) => {
+const PopBrowse = ({onClose, isActive, id, theme}) => {
   const [task, setTask] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [editedTitle, setEditedTitle] = useState('');
@@ -67,8 +65,15 @@ const PopBrowse = ({ onClose, isActive, id, theme }) => {
       return;
     }
     try {
-      await updateTask(id, { title: editedTitle, description: editedDescription });
-      setTask(prev => ({ ...prev, title: editedTitle, description: editedDescription }));
+      await updateTask(id, {
+        title: editedTitle,
+        description: editedDescription
+      });
+      setTask(prev => ({
+        ...prev,
+        title: editedTitle,
+        description: editedDescription
+      }));
       setEditMode(false);
       window.onTaskUpdated && window.onTaskUpdated();
     } catch (err) {
@@ -93,12 +98,12 @@ const PopBrowse = ({ onClose, isActive, id, theme }) => {
   };
 
   const themeColors = {
-    'Web Design': { bg: '#ffe4c2', text: '#ff6d00' },
-    Research: { bg: '#b4fdd1', text: '#06b16e' },
-    Copywriting: { bg: '#e9d4ff', text: '#9a48f1' },
+    'Web Design': {bg: '#ffe4c2', text: '#ff6d00'},
+    Research: {bg: '#b4fdd1', text: '#06b16e'},
+    Copywriting: {bg: '#e9d4ff', text: '#9a48f1'},
   };
 
-  const currentThemeColors = themeColors[theme] || { bg: '', text: '' };
+  const currentThemeColors = themeColors[theme] || {bg: '', text: ''};
   return (
     <PopBrowseMain $isActive={isActive}>
       <PopBrowseContainer>
@@ -110,32 +115,83 @@ const PopBrowse = ({ onClose, isActive, id, theme }) => {
                   type="text"
                   value={editedTitle}
                   onChange={(e) => setEditedTitle(e.target.value)}
-                  style={{ fontSize: '20px', fontWeight: '600', border: '1px solid #d4dbe5', padding: '5px' }}
+                  style={{
+                    fontSize: '20px',
+                    fontWeight: '600',
+                    border: '1px solid #d4dbe5',
+                    padding: '5px'
+                  }}
                   required
                 />
               ) : (
                 <PopBrowseTitle>{task?.title || 'Название задачи'} № {id}</PopBrowseTitle>
               )}
-              <CategoriesTheme $isActive={true} $bgColor={currentThemeColors.bg} $textColor={currentThemeColors.text}>
+              <CategoriesTheme $isActive={true} $bgColor={currentThemeColors.bg}
+                               $textColor={currentThemeColors.text}>
                 <CategoriesThemeP>{theme}</CategoriesThemeP>
               </CategoriesTheme>
             </PopBrowseTopBlock>
             <Status>
               <StatusP>Статус</StatusP>
               <StatusThemes>
-                <StatusTheme $isActive={task?.status === 'Без статуса'} $isHidden={false} onClick={async () => { await updateTask(id, { status: 'Без статуса', title: task.title, description: task.description }); setTask(prev => ({ ...prev, status: 'Без статуса' })); window.onTaskUpdated && window.onTaskUpdated(); }}>
+                <StatusTheme $isActive={task?.status === 'Без статуса'}
+                             $isHidden={false} onClick={async () => {
+                  await updateTask(id, {
+                    status: 'Без статуса',
+                    title: task.title,
+                    description: task.description
+                  });
+                  setTask(prev => ({...prev, status: 'Без статуса'}));
+                  window.onTaskUpdated && window.onTaskUpdated();
+                }}>
                   <StatusThemeP>Без статуса</StatusThemeP>
                 </StatusTheme>
-                <StatusTheme $isActive={task?.status === 'Нужно сделать'} $isGray={false} onClick={async () => { await updateTask(id, { status: 'Нужно сделать', title: task.title, description: task.description }); setTask(prev => ({ ...prev, status: 'Нужно сделать' })); window.onTaskUpdated && window.onTaskUpdated(); }}>
+                <StatusTheme $isActive={task?.status === 'Нужно сделать'}
+                             $isGray={false} onClick={async () => {
+                  await updateTask(id, {
+                    status: 'Нужно сделать',
+                    title: task.title,
+                    description: task.description
+                  });
+                  setTask(prev => ({...prev, status: 'Нужно сделать'}));
+                  window.onTaskUpdated && window.onTaskUpdated();
+                }}>
                   <StatusThemeP>Нужно сделать</StatusThemeP>
                 </StatusTheme>
-                <StatusTheme $isActive={task?.status === 'В работе'} $isHidden={false} onClick={async () => { await updateTask(id, { status: 'В работе', title: task.title, description: task.description }); setTask(prev => ({ ...prev, status: 'В работе' })); window.onTaskUpdated && window.onTaskUpdated(); }}>
+                <StatusTheme $isActive={task?.status === 'В работе'}
+                             $isHidden={false} onClick={async () => {
+                  await updateTask(id, {
+                    status: 'В работе',
+                    title: task.title,
+                    description: task.description
+                  });
+                  setTask(prev => ({...prev, status: 'В работе'}));
+                  window.onTaskUpdated && window.onTaskUpdated();
+                }}>
                   <StatusThemeP>В работе</StatusThemeP>
                 </StatusTheme>
-                <StatusTheme $isActive={task?.status === 'Тестирование'} $isHidden={false} onClick={async () => { await updateTask(id, { status: 'Тестирование', title: task.title, description: task.description }); setTask(prev => ({ ...prev, status: 'Тестирование' })); window.onTaskUpdated && window.onTaskUpdated(); }}>
+                <StatusTheme $isActive={task?.status === 'Тестирование'}
+                             $isHidden={false} onClick={async () => {
+                  await updateTask(id, {
+                    status: 'Тестирование',
+                    title: task.title,
+                    description: task.description
+                  });
+                  setTask(prev => ({...prev, status: 'Тестирование'}));
+                  window.onTaskUpdated && window.onTaskUpdated();
+                }}>
                   <StatusThemeP>Тестирование</StatusThemeP>
                 </StatusTheme>
-                <StatusTheme $isActive={task?.status === 'Готово'} $isHidden={false} onClick={async () => { await updateTask(id, { status: 'Готово', title: task.title, description: task.description }); setTask(prev => ({ ...prev, status: 'Готово' })); window.onTaskUpdated && window.onTaskUpdated(); }}>
+                <StatusTheme $isActive={task?.status === 'Готово'}
+                             $isHidden={false} onClick={async () => {
+                  await updateTask(id, {
+                    status: 'Готово',
+                    title: task.title,
+                    description: task.description
+                  });
+                  setTask(prev => ({...prev, status: 'Готово'}));
+                  window.onTaskUpdated && window.onTaskUpdated();
+                }}>
                   <StatusThemeP>Готово</StatusThemeP>
                 </StatusTheme>
               </StatusThemes>
@@ -154,16 +210,8 @@ const PopBrowse = ({ onClose, isActive, id, theme }) => {
                   />
                 </FormBrowseBlock>
               </PopBrowseForm>
-              <Calendar />
+              <Calendar/>
             </PopBrowseWrap>
-            <ThemeDownCategories>
-              <CategoriesP>
-                Категория
-              </CategoriesP>
-              <CategoriesTheme $isActive={true} $bgColor={currentThemeColors.bg} $textColor={currentThemeColors.text}>
-                <CategoriesThemeP>{theme}</CategoriesThemeP>
-              </CategoriesTheme>
-            </ThemeDownCategories>
             {!editMode && (
               <PopBrowseBtnBrowse>
                 <BtnGroup>

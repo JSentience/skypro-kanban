@@ -13,8 +13,8 @@ export const PopBrowseMain = styled.div`
   background: rgba(0, 0, 0, 0.4);
 
   ${(props) =>
-    props.$isActive &&
-    css`
+  props.$isActive &&
+  css`
       display: flex;
     `};
 
@@ -112,21 +112,21 @@ export const StatusTheme = styled.div`
   cursor: pointer;
 
   ${(props) =>
-    props.$isActive &&
-    css`
+  props.$isActive &&
+  css`
       background-color: #94a6be;
       color: #ffffff;
     `}
 
   ${(props) =>
-    props.$isHidden &&
-    css`
+  props.$isHidden &&
+  css`
       display: none;
     `}
 
   ${(props) =>
-    props.$isGray &&
-    css`
+  props.$isGray &&
+  css`
       color: #94a6be;
     `}
 `;
@@ -261,14 +261,14 @@ export const CalendarCell = styled.div`
   cursor: pointer;
 
   ${(props) =>
-    props.$isOtherMonth &&
-    css`
+  props.$isOtherMonth &&
+  css`
       opacity: 0;
     `}
 
   ${(props) =>
-    props.$isCellDay &&
-    css`
+  props.$isCellDay &&
+  css`
       &:hover {
         color: #94a6be;
         background-color: #eaeef6;
@@ -276,15 +276,15 @@ export const CalendarCell = styled.div`
     `}
 
   ${(props) =>
-    props.$isActiveDay &&
-    css`
+  props.$isActiveDay &&
+  css`
       background-color: #94a6be;
       color: #ffffff;
     `}
 
   ${(props) =>
-    props.$isCurrent &&
-    css`
+  props.$isCurrent &&
+  css`
       font-weight: 700;
     `}
 
@@ -369,8 +369,8 @@ export const CategoriesTheme = styled.div`
     color: ${(props) => props.$textColor};
 
   ${(props) =>
-    props.$isActive &&
-    css`
+  props.$isActive &&
+  css`
       opacity: 1;
     `}
 `;
@@ -482,8 +482,8 @@ export const PopBrowseBtnEdit = styled.div`
   justify-content: space-between;
 
   ${(props) =>
-    !props.$isEditMode &&
-    css`
+  !props.$isEditMode &&
+  css`
       display: none;
     `};
 `;

@@ -17,7 +17,7 @@ import {
 } from './Header.styled';
 import {Link, useNavigate} from 'react-router-dom';
 
-export const Header = ({ onLogout , user}) => {
+export const Header = ({onLogout, user}) => {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [logOut, setLogOut] = useState(false);
   const [popNewCard, setPopNewCard] = useState(false);
@@ -64,12 +64,12 @@ export const Header = ({ onLogout , user}) => {
           <HeaderBlock>
             <HeaderLogo className="_show _light" data-header-logo>
               <a href="" target="_self">
-                <img src="/images/logo.png" alt="logo" />
+                <img src="/images/logo.png" alt="logo"/>
               </a>
             </HeaderLogo>
             <HeaderLogo className="_dark" data-header-logo>
               <Link to="/" target="_self">
-                <img src="/images/logo_dark.png" alt="logo" />
+                <img src="/images/logo_dark.png" alt="logo"/>
               </Link>
             </HeaderLogo>
             <HeaderNav>
@@ -116,13 +116,13 @@ export const Header = ({ onLogout , user}) => {
         <PopExit
           onClose={handleClosePopExit}
           onLogout={onLogout}
-          style={{ display: 'block' }}
+          style={{display: 'block'}}
         />
       )}
       {popNewCard && (
         <PopNewCard
           onClose={handleClosePopNewCard}
-          style={{ display: 'block' }}
+          style={{display: 'block'}}
         />
       )}
     </>

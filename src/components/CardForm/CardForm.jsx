@@ -22,7 +22,7 @@ export const CardForm = () => {
       </FormBlock>
       <FormBlock>
         <Subttl>Описание задачи</Subttl>
-        <FormArea name="text" id="textArea" placeholder="" readOnly />
+        <FormArea name="text" id="textArea" placeholder="" readOnly/>
       </FormBlock>
     </PopCardForm>
   );

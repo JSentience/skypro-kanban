@@ -7,9 +7,9 @@ import {
   PopExitStyled,
   PopExitTtl,
 } from './PopExit.styled';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
-const PopExit = ({ style, onClose, onLogout }) => {
+const PopExit = ({style, onClose, onLogout}) => {
   const navigate = useNavigate();
   const handleLogout = (e) => {
     e.preventDefault();

@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { login } from '../../services/api';
+import {useState} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
+import {login} from '../../services/api';
 import {
   ContainerSignin,
   Modal,
@@ -16,7 +16,7 @@ import {
   Wrapper,
 } from './SignIn.styled';
 
-export const SignIn = ({ setIsAuth }) => {
+export const SignIn = ({setIsAuth}) => {
   const [loginValue, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -24,8 +24,14 @@ export const SignIn = ({ setIsAuth }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const trimmedLogin = loginValue.trim();
+    const trimmedPassword = password.trim();
+    if (!trimmedLogin || !trimmedPassword) {
+      setError('Поле не может быть пустым или содержать только пробелы');
+      return;
+    }
     try {
-      await login(loginValue, password);
+      await login(trimmedLogin, trimmedPassword);
       setIsAuth(true);
       navigate('/');
     } catch (err) {
@@ -42,12 +48,12 @@ export const SignIn = ({ setIsAuth }) => {
               <ModalTtlH2>Вход</ModalTtlH2>
             </ModalTtl>
             <ModalFormLogin id="formLogIn" onSubmit={handleSubmit}>
-              {error && <p style={{ color: 'red' }}>{error}</p>}
+              {error && <p style={{color: 'red'}}>{error}</p>}
               <ModalInput
                 type="text"
                 name="login"
                 id="formlogin"
-                placeholder="Логин"
+                placeholder="Эл. почта "
                 value={loginValue}
                 onChange={(e) => setLogin(e.target.value)}
                 required
