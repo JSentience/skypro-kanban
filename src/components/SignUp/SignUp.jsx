@@ -1,6 +1,6 @@
-import {useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-import {register} from '../../services/api';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { register } from '../../services/api';
 import {
   ContainerSignup,
   Modal,
@@ -29,8 +29,8 @@ export const SignUp = () => {
     const trimmedPassword = password.trim();
     const trimmedName = name.trim();
     if (!loginTrim || !trimmedPassword || !trimmedName) {
-      setError('Поле не может быть пустым или содержать только пробелы')
-      return
+      setError('Поле не может быть пустым или содержать только пробелы');
+      return;
     }
     try {
       await register(loginTrim, trimmedPassword, trimmedName);
@@ -49,7 +49,7 @@ export const SignUp = () => {
               <ModalTtlH2>Регистрация</ModalTtlH2>
             </ModalTtl>
             <ModalFormLogin id="formLogUp" onSubmit={handleSubmit}>
-              {error && <p style={{color: 'red'}}>{error}</p>}
+              {error && <p style={{ color: 'red' }}>{error}</p>}
               <ModalInput
                 type="text"
                 name="first-name"

@@ -1,45 +1,30 @@
-import {useCallback, useEffect, useState} from 'react';
-import {Column} from '../Column/Column';
+import { Column } from '../Column/Column';
 import Loader from '../Loader/Loader';
-import {Container} from '../Wrapper.styled';
-import {MainBlock, MainContent, MainStyled} from './Main.styled';
+import { Container } from '../Wrapper.styled';
+import { MainBlock, MainContent, MainStyled } from './Main.styled';
+import { useTasks } from '../../context/TaskContext';
 
-const Hero = ({loading, onOpenPopBrowse, fetchTasks: fetchTasksProp}) => {
-  const [tasks, setTasks] = useState([]);
-  const [error, setError] = useState('');
-
-  const loadTasks = useCallback(async () => {
-    try {
-      const data = await fetchTasksProp();
-      setTasks(data.tasks || []);
-      setError('');
-    } catch (err) {
-      setError(err.message);
-    }
-  }, [fetchTasksProp]);
-
-
-  useEffect(() => {
-    if (!loading) {
-      loadTasks();
-    }
-  }, [loading, loadTasks]);
-
-  useEffect(() => {
-    window.onTaskUpdated = loadTasks;
-    window.onTaskCreated = loadTasks;
-  }, [loadTasks]);
+const Hero = ({ onOpenPopBrowse }) => {
+  const { tasks, loading } = useTasks();
 
   const groupTasksByStatus = (taskList) => {
-    const statuses = ['Без статуса', 'Нужно сделать', 'В работе', 'Тестирование', 'Готово'];
-    return statuses.map(status => ({
+    const statuses = [
+      'Без статуса',
+      'Нужно сделать',
+      'В работе',
+      'Тестирование',
+      'Готово',
+    ];
+    return statuses.map((status) => ({
       title: status,
-      cards: taskList.filter(task => task.status === status).map(task => ({
-        id: task._id,
-        theme: task.topic,
-        title: task.title,
-        date: new Date(task.date).toLocaleDateString('ru-RU'),
-      }))
+      cards: taskList
+        .filter((task) => task.status === status)
+        .map((task) => ({
+          id: task._id,
+          theme: task.topic,
+          title: task.title,
+          date: new Date(task.date).toLocaleDateString('ru-RU'),
+        })),
     }));
   };
 
@@ -48,12 +33,11 @@ const Hero = ({loading, onOpenPopBrowse, fetchTasks: fetchTasksProp}) => {
   return (
     <>
       {loading ? (
-        <Loader/>
+        <Loader />
       ) : (
         <MainStyled>
           <Container>
             <MainBlock>
-              {error && <p style={{color: 'red'}}>{error}</p>}
               <MainContent>
                 {columns.map((column, index) => (
                   <Column

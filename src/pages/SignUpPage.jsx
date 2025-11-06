@@ -1,5 +1,5 @@
-import {SignUp} from '../components/SignUp/SignUp';
+import { SignUp } from '../components/SignUp/SignUp';
 
 export const SignUpPage = () => {
-  return <SignUp/>;
+  return <SignUp />;
 };
