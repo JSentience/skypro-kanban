@@ -1,10 +1,10 @@
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   CardBtn,
   CardContent,
   CardDate,
-  CardDescriptionId,
   CardGroup,
+  CardLink,
   CardsCard,
   CardsItem,
   CardTheme,
@@ -22,9 +22,6 @@ export const Card = ({ theme, title, date, id }) => {
 
   const handleCardClick = (e) => {
     e.preventDefault();
-    if (id) {
-      navigate(`/card/${id}`, { state: { theme } });
-    }
   };
   const handleCardClickPopBrowse = (e) => {
     e.preventDefault();
@@ -32,6 +29,8 @@ export const Card = ({ theme, title, date, id }) => {
   };
 
   const currentThemeColors = themeColors[theme] || { bg: '', text: '' };
+
+  const displayTitle = title.length > 20 ? title.slice(0, 20) + '...' : title;
 
   return (
     <CardsItem>
@@ -50,9 +49,9 @@ export const Card = ({ theme, title, date, id }) => {
           </CardBtn>
         </CardGroup>
         <CardContent>
-          <a onClick={handleCardClick}>
-            <CardTitle>{title}</CardTitle>
-          </a>
+          <CardLink onClick={handleCardClick}>
+            <CardTitle>{displayTitle}</CardTitle>
+          </CardLink>
           <CardDate>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +84,6 @@ export const Card = ({ theme, title, date, id }) => {
             <p>{date}</p>
           </CardDate>
         </CardContent>
-        {id && <CardDescriptionId>ID: {id}</CardDescriptionId>}
       </CardsCard>
     </CardsItem>
   );

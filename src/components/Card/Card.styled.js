@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {animation} from '../Animation.styled.js';
+import { animation } from '../Animation.styled.js';
 
 export const CardsItem = styled.div`
   padding: 5px;
@@ -90,12 +90,25 @@ export const CardBtn = styled.div`
   }
 `;
 
+export const CardLink = styled.a`
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  flex-shrink: 0;
+`;
+
 export const CardTitle = styled.h3`
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
   color: #000000;
-  margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  display: block;
 `;
 
 export const CardContent = styled.div`

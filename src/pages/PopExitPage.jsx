@@ -1,9 +1,8 @@
 import {useNavigate} from 'react-router-dom';
 import PopExit from '../components/PopExit/PopExit';
 
-export const PopExitPage = ({ setIsAuth }) => {
+export const PopExitPage = ({setIsAuth}) => {
   const navigate = useNavigate();
-
 
 
   const handleClose = () => {
@@ -19,5 +18,5 @@ export const PopExitPage = ({ setIsAuth }) => {
     }
   };
 
-  return <PopExit onClose={handleClose} onLogout={handleLogout} />;
+  return <PopExit onClose={handleClose} onLogout={handleLogout}/>;
 };

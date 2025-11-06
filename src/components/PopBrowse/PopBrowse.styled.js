@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const PopBrowseMain = styled.div`
   display: none;
@@ -65,6 +65,7 @@ export const PopBrowseTopBlock = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 18px;
+  gap: 10px;
 
   @media screen and (max-width: 495px) {
     display: block;
@@ -76,10 +77,15 @@ export const PopBrowseTitle = styled.h3`
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 400px;
 
   @media screen and (max-width: 495px) {
     font-size: 14px;
     line-height: 1;
+    max-width: 200px;
   }
 `;
 
@@ -88,11 +94,11 @@ export const Status = styled.div`
 `;
 
 export const StatusP = styled.p`
-    margin-bottom: 14px;
-    color: #000;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1;
+  margin-bottom: 14px;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
 `;
 
 export const StatusThemes = styled.div`
@@ -109,6 +115,14 @@ export const StatusTheme = styled.div`
   padding: 11px 14px 10px;
   margin-right: 7px;
   margin-bottom: 7px;
+  cursor: pointer;
+
+  ${(props) =>
+    props.$isActive &&
+    css`
+      background-color: #94a6be;
+      color: #ffffff;
+    `}
 
   ${(props) =>
     props.$isHidden &&
@@ -342,23 +356,32 @@ export const ThemeDownCategories = styled.div`
 `;
 
 export const CategoriesP = styled.p`
-    margin-bottom: 14px;
-    color: #000;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1;
+  margin-bottom: 14px;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+`;
+
+export const CategoriesThemes = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 15px;
 `;
 
 export const CategoriesTheme = styled.div`
-    display: inline-block;
-    width: auto;
-    height: 30px;
-    padding: 8px 20px;
-    border-radius: 24px;
-    margin-right: 7px;
-    opacity: 0.4;
-    background-color: ${(props) => props.$bgColor};
-    color: ${(props) => props.$textColor};
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+  background-color: ${(props) => props.$bgColor};
+  color: ${(props) => props.$textColor};
+  cursor: pointer;
 
   ${(props) =>
     props.$isActive &&
@@ -485,10 +508,15 @@ export const BtnEditSave = styled.button`
   margin-bottom: 10px;
   padding: 0 14px;
   border-radius: 4px;
-  background: #565eef;
-  border: none;
+  background: transparent;
+  border: 0.7px solid #565eef;
   outline: none;
-  color: #ffffff;
+  color: #565eef;
+
+  &:hover {
+    background-color: #565eef;
+    color: #ffffff;
+  }
 
   @media screen and (max-width: 495px) {
     width: 100%;
@@ -507,8 +535,9 @@ export const BtnEditCancel = styled.button`
   color: #565eef;
   margin-right: 8px;
 
-  a {
-    color: #565eef;
+  &:hover {
+    background-color: #565eef;
+    color: #ffffff;
   }
 
   @media screen and (max-width: 495px) {
@@ -529,8 +558,9 @@ export const BtnEditDelete = styled.button`
   color: #565eef;
   margin-right: 8px;
 
-  a {
-    color: #565eef;
+  &:hover {
+    background-color: #565eef;
+    color: #ffffff;
   }
 
   @media screen and (max-width: 495px) {
