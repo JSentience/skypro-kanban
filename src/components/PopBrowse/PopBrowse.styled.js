@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const PopBrowseMain = styled.div`
   display: none;
@@ -13,8 +13,8 @@ export const PopBrowseMain = styled.div`
   background: rgba(0, 0, 0, 0.4);
 
   ${(props) =>
-  props.$isActive &&
-  css`
+    props.$isActive &&
+    css`
       display: flex;
     `};
 
@@ -65,6 +65,7 @@ export const PopBrowseTopBlock = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 18px;
+  gap: 10px;
 
   @media screen and (max-width: 495px) {
     display: block;
@@ -76,10 +77,15 @@ export const PopBrowseTitle = styled.h3`
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 400px;
 
   @media screen and (max-width: 495px) {
     font-size: 14px;
     line-height: 1;
+    max-width: 200px;
   }
 `;
 
@@ -88,11 +94,11 @@ export const Status = styled.div`
 `;
 
 export const StatusP = styled.p`
-    margin-bottom: 14px;
-    color: #000;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1;
+  margin-bottom: 14px;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
 `;
 
 export const StatusThemes = styled.div`
@@ -112,21 +118,21 @@ export const StatusTheme = styled.div`
   cursor: pointer;
 
   ${(props) =>
-  props.$isActive &&
-  css`
+    props.$isActive &&
+    css`
       background-color: #94a6be;
       color: #ffffff;
     `}
 
   ${(props) =>
-  props.$isHidden &&
-  css`
+    props.$isHidden &&
+    css`
       display: none;
     `}
 
   ${(props) =>
-  props.$isGray &&
-  css`
+    props.$isGray &&
+    css`
       color: #94a6be;
     `}
 `;
@@ -261,14 +267,14 @@ export const CalendarCell = styled.div`
   cursor: pointer;
 
   ${(props) =>
-  props.$isOtherMonth &&
-  css`
+    props.$isOtherMonth &&
+    css`
       opacity: 0;
     `}
 
   ${(props) =>
-  props.$isCellDay &&
-  css`
+    props.$isCellDay &&
+    css`
       &:hover {
         color: #94a6be;
         background-color: #eaeef6;
@@ -276,15 +282,15 @@ export const CalendarCell = styled.div`
     `}
 
   ${(props) =>
-  props.$isActiveDay &&
-  css`
+    props.$isActiveDay &&
+    css`
       background-color: #94a6be;
       color: #ffffff;
     `}
 
   ${(props) =>
-  props.$isCurrent &&
-  css`
+    props.$isCurrent &&
+    css`
       font-weight: 700;
     `}
 
@@ -350,27 +356,36 @@ export const ThemeDownCategories = styled.div`
 `;
 
 export const CategoriesP = styled.p`
-    margin-bottom: 14px;
-    color: #000;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1;
+  margin-bottom: 14px;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+`;
+
+export const CategoriesThemes = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 15px;
 `;
 
 export const CategoriesTheme = styled.div`
-    display: inline-block;
-    width: auto;
-    height: 30px;
-    padding: 8px 20px;
-    border-radius: 24px;
-    margin-right: 7px;
-    opacity: 0.4;
-    background-color: ${(props) => props.$bgColor};
-    color: ${(props) => props.$textColor};
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+  background-color: ${(props) => props.$bgColor};
+  color: ${(props) => props.$textColor};
+  cursor: pointer;
 
   ${(props) =>
-  props.$isActive &&
-  css`
+    props.$isActive &&
+    css`
       opacity: 1;
     `}
 `;
@@ -482,8 +497,8 @@ export const PopBrowseBtnEdit = styled.div`
   justify-content: space-between;
 
   ${(props) =>
-  !props.$isEditMode &&
-  css`
+    !props.$isEditMode &&
+    css`
       display: none;
     `};
 `;
@@ -493,10 +508,15 @@ export const BtnEditSave = styled.button`
   margin-bottom: 10px;
   padding: 0 14px;
   border-radius: 4px;
-  background: #565eef;
-  border: none;
+  background: transparent;
+  border: 0.7px solid #565eef;
   outline: none;
-  color: #ffffff;
+  color: #565eef;
+
+  &:hover {
+    background-color: #565eef;
+    color: #ffffff;
+  }
 
   @media screen and (max-width: 495px) {
     width: 100%;
@@ -515,8 +535,9 @@ export const BtnEditCancel = styled.button`
   color: #565eef;
   margin-right: 8px;
 
-  a {
-    color: #565eef;
+  &:hover {
+    background-color: #565eef;
+    color: #ffffff;
   }
 
   @media screen and (max-width: 495px) {
@@ -537,8 +558,9 @@ export const BtnEditDelete = styled.button`
   color: #565eef;
   margin-right: 8px;
 
-  a {
-    color: #565eef;
+  &:hover {
+    background-color: #565eef;
+    color: #ffffff;
   }
 
   @media screen and (max-width: 495px) {

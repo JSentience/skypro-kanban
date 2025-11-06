@@ -1,23 +1,23 @@
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   CardBtn,
   CardContent,
   CardDate,
-  CardDescriptionId,
   CardGroup,
+  CardLink,
   CardsCard,
   CardsItem,
   CardTheme,
   CardTitle,
 } from './Card.styled';
 
-export const Card = ({theme, title, date, id}) => {
+export const Card = ({ theme, title, date, id }) => {
   const navigate = useNavigate();
 
   const themeColors = {
-    'Web Design': {bg: '#ffe4c2', text: '#ff6d00'},
-    Research: {bg: '#b4fdd1', text: '#06b16e'},
-    Copywriting: {bg: '#e9d4ff', text: '#9a48f1'},
+    'Web Design': { bg: '#ffe4c2', text: '#ff6d00' },
+    Research: { bg: '#b4fdd1', text: '#06b16e' },
+    Copywriting: { bg: '#e9d4ff', text: '#9a48f1' },
   };
 
   const handleCardClick = (e) => {
@@ -25,10 +25,12 @@ export const Card = ({theme, title, date, id}) => {
   };
   const handleCardClickPopBrowse = (e) => {
     e.preventDefault();
-    navigate(`/pop-browse/${id}`, {state: {theme}});
+    navigate(`/pop-browse/${id}`, { state: { theme } });
   };
 
-  const currentThemeColors = themeColors[theme] || {bg: '', text: ''};
+  const currentThemeColors = themeColors[theme] || { bg: '', text: '' };
+
+  const displayTitle = title.length > 20 ? title.slice(0, 20) + '...' : title;
 
   return (
     <CardsItem>
@@ -47,9 +49,9 @@ export const Card = ({theme, title, date, id}) => {
           </CardBtn>
         </CardGroup>
         <CardContent>
-          <a onClick={handleCardClick}>
-            <CardTitle>{title}</CardTitle>
-          </a>
+          <CardLink onClick={handleCardClick}>
+            <CardTitle>{displayTitle}</CardTitle>
+          </CardLink>
           <CardDate>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -75,14 +77,13 @@ export const Card = ({theme, title, date, id}) => {
               </g>
               <defs>
                 <clipPath id="clip0_1_415">
-                  <rect width="13" height="13" fill="white"/>
+                  <rect width="13" height="13" fill="white" />
                 </clipPath>
               </defs>
             </svg>
             <p>{date}</p>
           </CardDate>
         </CardContent>
-        {id && <CardDescriptionId>ID: {id}</CardDescriptionId>}
       </CardsCard>
     </CardsItem>
   );
