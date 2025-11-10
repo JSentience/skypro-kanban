@@ -1,6 +1,7 @@
-import {useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-import {login} from '../../services/api';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { login } from '../../services/api';
+import { useAuth } from '../../context/AuthContext';
 import {
   ContainerSignin,
   Modal,
@@ -16,11 +17,12 @@ import {
   Wrapper,
 } from './SignIn.styled';
 
-export const SignIn = ({setIsAuth}) => {
+export const SignIn = () => {
   const [loginValue, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { login: authLogin } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,8 +33,8 @@ export const SignIn = ({setIsAuth}) => {
       return;
     }
     try {
-      await login(trimmedLogin, trimmedPassword);
-      setIsAuth(true);
+      const response = await login(trimmedLogin, trimmedPassword);
+      authLogin(response.user);
       navigate('/');
     } catch (err) {
       setError(err.message);
@@ -48,7 +50,7 @@ export const SignIn = ({setIsAuth}) => {
               <ModalTtlH2>Вход</ModalTtlH2>
             </ModalTtl>
             <ModalFormLogin id="formLogIn" onSubmit={handleSubmit}>
-              {error && <p style={{color: 'red'}}>{error}</p>}
+              {error && <p style={{ color: 'red' }}>{error}</p>}
               <ModalInput
                 type="text"
                 name="login"

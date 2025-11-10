@@ -1,7 +1,7 @@
-import {StrictMode} from 'react';
-import {createRoot} from 'react-dom/client';
-import {BrowserRouter} from 'react-router-dom';
-import {createGlobalStyle} from 'styled-components';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { createGlobalStyle } from 'styled-components';
 import App from './App.jsx';
 
 const GlobalStyle = createGlobalStyle`
@@ -47,8 +47,8 @@ const GlobalStyle = createGlobalStyle`
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <GlobalStyle/>
-      <App/>
+      <GlobalStyle />
+      <App />
     </BrowserRouter>
   </StrictMode>,
 );

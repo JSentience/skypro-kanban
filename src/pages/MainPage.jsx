@@ -1,16 +1,17 @@
 import Header from '../components/Header/Header';
 import Hero from '../components/Hero/Hero';
-import {Wrapper} from '../components/Wrapper.styled';
-import {Outlet} from 'react-router-dom';
-import {fetchTasks} from "../services/api";
+import { Wrapper } from '../components/Wrapper.styled';
+import { Outlet } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
-export const MainPage = ({loading, onOpenPopBrowse, onLogout, user}) => {
+export const MainPage = ({ onOpenPopBrowse, onLogout }) => {
+  const { user } = useAuth();
+
   return (
     <Wrapper>
-      <Header onLogout={onLogout} user={user}/>
-      <Hero loading={loading} onOpenPopBrowse={onOpenPopBrowse}
-            fetchTasks={fetchTasks}/>
-      <Outlet/>
+      <Header onLogout={onLogout} user={user} />
+      <Hero onOpenPopBrowse={onOpenPopBrowse} />
+      <Outlet />
     </Wrapper>
   );
 };

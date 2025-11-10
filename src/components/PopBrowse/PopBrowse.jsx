@@ -31,33 +31,46 @@ import {
   Subttl,
 } from './PopBrowse.styled.js';
 import Calendar from '../Calendar/Calendar';
-import { deleteTask, fetchTaskById, updateTask } from '../../services/api';
+import { fetchTaskById } from '../../services/api';
+import { useTasks } from '../../context/TaskContext';
 
-const PopBrowse = ({ onClose, isActive, id, theme }) => {
+const PopBrowse = ({ onClose, isActive, id }) => {
   const [task, setTask] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [editedTitle, setEditedTitle] = useState('');
   const [editedDescription, setEditedDescription] = useState('');
   const [editedTopic, setEditedTopic] = useState('');
   const [editedStatus, setEditedStatus] = useState('');
+  const [isDeleted, setIsDeleted] = useState(false);
+  const {
+    tasks,
+    updateTask: updateTaskContext,
+    deleteTask: deleteTaskContext,
+  } = useTasks();
 
   useEffect(() => {
     const loadTask = async () => {
-      try {
+      if (isDeleted) return;
+      const localTask = tasks.find((t) => (t._id || t.id) === id);
+      if (localTask) {
+        setTask(localTask);
+        setEditedTitle(localTask.title);
+        setEditedDescription(localTask.description);
+        setEditedTopic(localTask.topic);
+        setEditedStatus(localTask.status);
+      } else {
         const data = await fetchTaskById(id);
         setTask(data.task);
         setEditedTitle(data.task.title);
         setEditedDescription(data.task.description);
         setEditedTopic(data.task.topic);
         setEditedStatus(data.task.status);
-      } catch (err) {
-        console.error('Error loading task:', err);
       }
     };
-    if (id) {
+    if (id && !isDeleted) {
       loadTask();
     }
-  }, [id]);
+  }, [id, tasks, isDeleted]);
 
   const handleEdit = () => {
     setEditMode(true);
@@ -68,25 +81,22 @@ const PopBrowse = ({ onClose, isActive, id, theme }) => {
       alert('Название задачи не может быть пустым');
       return;
     }
-    try {
-      await updateTask(id, {
-        title: editedTitle,
-        description: editedDescription,
-        topic: editedTopic,
-        status: editedStatus,
-      });
-      setTask((prev) => ({
-        ...prev,
-        title: editedTitle,
-        description: editedDescription,
-        topic: editedTopic,
-        status: editedStatus,
-      }));
-      setEditMode(false);
-      window.onTaskUpdated && window.onTaskUpdated();
-    } catch (err) {
-      console.error('Error saving task:', err);
-    }
+    const updatedTask = {
+      _id: id,
+      title: editedTitle,
+      description: editedDescription,
+      topic: editedTopic,
+      status: editedStatus,
+    };
+    await updateTaskContext(updatedTask);
+    setTask((prev) => ({
+      ...prev,
+      title: editedTitle,
+      description: editedDescription,
+      topic: editedTopic,
+      status: editedStatus,
+    }));
+    setEditMode(false);
   };
 
   const handleCancel = () => {
@@ -99,11 +109,11 @@ const PopBrowse = ({ onClose, isActive, id, theme }) => {
 
   const handleDelete = async () => {
     try {
-      await deleteTask(id);
+      setIsDeleted(true);
+      await deleteTaskContext(id);
       onClose();
-      window.location.reload();
-    } catch (err) {
-      console.error('Error deleting task:', err);
+    } catch {
+      setIsDeleted(false);
     }
   };
 

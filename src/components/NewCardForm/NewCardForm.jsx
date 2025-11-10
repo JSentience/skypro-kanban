@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import {
   FormNewArea,
   FormNewBlock,
@@ -7,18 +7,18 @@ import {
   Subttl,
 } from './NewCardForm.styled';
 
-const NewCardForm = ({onSubmit, error}) => {
+const NewCardForm = ({ onSubmit, error }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({title, description});
+    onSubmit({ title, description });
   };
 
   return (
     <PopNewCardForm id="formNewCard" onSubmit={handleSubmit}>
-      {error && <p style={{color: 'red'}}>{error}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <FormNewBlock>
         <Subttl>Название задачи</Subttl>
         <FormNewInput

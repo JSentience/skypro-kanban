@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Calendar from '../Calendar/Calendar';
 import NewCardForm from '../NewCardForm/NewCardForm';
-import { createTask } from '../../services/api';
+import { useTasks } from '../../context/TaskContext';
 import {
   CategoriesP,
   CategoriesTheme,
@@ -21,6 +21,7 @@ import {
 const PopNewCard = ({ style, onClose, onTaskCreated }) => {
   const [selectedTopic, setSelectedTopic] = useState('Web Design');
   const [error, setError] = useState('');
+  const { addTask } = useTasks();
 
   const handleSubmit = async (formData) => {
     try {
@@ -31,8 +32,7 @@ const PopNewCard = ({ style, onClose, onTaskCreated }) => {
         status: 'Без статуса',
         date: new Date().toISOString(),
       };
-      await createTask(taskData);
-      window.onTaskCreated && window.onTaskCreated();
+      await addTask(taskData);
       onTaskCreated();
       onClose();
     } catch (err) {
