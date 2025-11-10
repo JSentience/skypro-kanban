@@ -42,12 +42,12 @@ export const PopBrowseContainer = styled.div`
 export const PopBrowseBlock = styled.div`
   display: block;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.colors.cardBg};
   max-width: 630px;
   width: 100%;
   padding: 40px 30px 38px;
   border-radius: 10px;
-  border: 0.7px solid #d4dbe5;
+  border: 0.7px solid ${(props) => props.theme.colors.border};
   position: relative;
 
   @media screen and (max-width: 660px) {
@@ -73,7 +73,7 @@ export const PopBrowseTopBlock = styled.div`
 `;
 
 export const PopBrowseTitle = styled.h3`
-  color: #000;
+  color: ${(props) => props.theme.colors.text};
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
@@ -95,7 +95,7 @@ export const Status = styled.div`
 
 export const StatusP = styled.p`
   margin-bottom: 14px;
-  color: #000;
+  color: ${(props) => props.theme.colors.text};
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
@@ -166,20 +166,21 @@ export const FormBrowseArea = styled.textarea`
   width: 100%;
   outline: none;
   padding: 14px;
-  background: #eaeef6;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  background: ${(props) => props.theme.colors.cardBg};
+  border: 0.7px solid ${(props) => props.theme.colors.border};
   border-radius: 8px;
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.14px;
   margin-top: 14px;
   height: 200px;
+  color: ${(props) => props.theme.colors.text};
 
   &::placeholder {
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94a6be;
+    color: ${(props) => props.theme.colors.textSecondary};
     letter-spacing: -0.14px;
   }
 
@@ -202,6 +203,7 @@ export const Calendar = styled.div`
 export const CalendarTtl = styled.p`
   margin-bottom: 14px;
   padding: 0 7px;
+  color: ${(props) => props.theme.colors.text};
 `;
 
 export const CalendarBlock = styled.div`
@@ -209,7 +211,7 @@ export const CalendarBlock = styled.div`
 `;
 
 export const CalendarMonth = styled.div`
-  color: #94a6be;
+  color: ${(props) => props.theme.colors.text};
   font-size: 14px;
   line-height: 25px;
   font-weight: 600;
@@ -229,7 +231,7 @@ export const CalendarDaysNames = styled.div`
 `;
 
 export const CalendarDayName = styled.div`
-  color: #94a6be;
+  color: ${(props) => props.theme.colors.textSecondary};
   font-size: 10px;
   font-weight: 500;
   line-height: normal;
@@ -357,7 +359,7 @@ export const ThemeDownCategories = styled.div`
 
 export const CategoriesP = styled.p`
   margin-bottom: 14px;
-  color: #000;
+  color: ${(props) => props.theme.colors.text};
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
@@ -424,7 +426,7 @@ export const BtnBrowseEdit = styled.button`
   border: 0.7px solid #565eef;
   outline: none;
   background: transparent;
-  color: #565eef;
+  color: #ffffff;
   &:hover {
     background-color: #33399b;
     color: #ffffff;
@@ -448,7 +450,7 @@ export const BtnBrowseDelete = styled.button`
   border: 0.7px solid #565eef;
   outline: none;
   background: transparent;
-  color: #565eef;
+  color: #ffffff;
   margin-right: 8px;
 
   &:hover {
@@ -511,7 +513,7 @@ export const BtnEditSave = styled.button`
   background: transparent;
   border: 0.7px solid #565eef;
   outline: none;
-  color: #565eef;
+  color: #ffffff;
 
   &:hover {
     background-color: #565eef;
@@ -532,7 +534,7 @@ export const BtnEditCancel = styled.button`
   border: 0.7px solid #565eef;
   outline: none;
   background: transparent;
-  color: #565eef;
+  color: #ffffff;
   margin-right: 8px;
 
   &:hover {
@@ -555,7 +557,7 @@ export const BtnEditDelete = styled.button`
   border: 0.7px solid #565eef;
   outline: none;
   background: transparent;
-  color: #565eef;
+  color: #ffffff;
   margin-right: 8px;
 
   &:hover {
@@ -590,7 +592,7 @@ export const BtnEditClose = styled.button`
 `;
 
 export const Subttl = styled.p`
-  color: #000;
+  color: ${(props) => props.theme.colors.text};
   font-size: 14px;
   font-weight: 600;
   line-height: 1;

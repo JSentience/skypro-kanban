@@ -33,6 +33,7 @@ import {
 import Calendar from '../Calendar/Calendar';
 import { fetchTaskById } from '../../services/api';
 import { useTasks } from '../../context/TaskContext';
+import { showSuccess, showError } from '../../utils/toast';
 
 const PopBrowse = ({ onClose, isActive, id }) => {
   const [task, setTask] = useState(null);
@@ -78,7 +79,7 @@ const PopBrowse = ({ onClose, isActive, id }) => {
 
   const handleSave = async () => {
     if (!editedTitle.trim()) {
-      alert('Название задачи не может быть пустым');
+      showError('Название задачи не может быть пустым');
       return;
     }
     const updatedTask = {
@@ -87,6 +88,7 @@ const PopBrowse = ({ onClose, isActive, id }) => {
       description: editedDescription,
       topic: editedTopic,
       status: editedStatus,
+      date: task.date,
     };
     await updateTaskContext(updatedTask);
     setTask((prev) => ({
@@ -97,6 +99,7 @@ const PopBrowse = ({ onClose, isActive, id }) => {
       status: editedStatus,
     }));
     setEditMode(false);
+    showSuccess('Задача успешно обновлена!');
   };
 
   const handleCancel = () => {
@@ -111,9 +114,11 @@ const PopBrowse = ({ onClose, isActive, id }) => {
     try {
       setIsDeleted(true);
       await deleteTaskContext(id);
+      showSuccess('Задача успешно удалена!');
       onClose();
     } catch {
       setIsDeleted(false);
+      showError('Ошибка при удалении задачи.');
     }
   };
 

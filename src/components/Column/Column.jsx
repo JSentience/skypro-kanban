@@ -5,24 +5,35 @@ import {
   ColumnTitle,
   ColumnTitleP,
 } from './Column.styled';
+import { useDroppable } from '@dnd-kit/core';
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
 
-export const Column = ({ title, cards, onOpenPopBrowse }) => {
+export const Column = ({ id, title, cards, onOpenPopBrowse }) => {
+  const { setNodeRef } = useDroppable({
+    id,
+  });
+
   return (
-    <ColumnStyled>
+    <ColumnStyled ref={setNodeRef}>
       <ColumnTitle>
         <ColumnTitleP>{title}</ColumnTitleP>
       </ColumnTitle>
       <Cards>
-        {cards.map((card, index) => (
-          <Card
-            key={index}
-            theme={card.theme}
-            title={card.title}
-            date={card.date}
-            id={card.id}
-            onOpenPopBrowse={onOpenPopBrowse}
-          />
-        ))}
+        <SortableContext items={cards.map(card => card.id)} strategy={verticalListSortingStrategy}>
+          {cards.map((card) => (
+            <Card
+              key={card.id}
+              theme={card.theme}
+              title={card.title}
+              date={card.date}
+              id={card.id}
+              onOpenPopBrowse={onOpenPopBrowse}
+            />
+          ))}
+        </SortableContext>
       </Cards>
     </ColumnStyled>
   );

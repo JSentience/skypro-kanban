@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MainStyled = styled.main`
   width: 100%;
-  background-color: #eaeef6;
+  background-color: ${props => props.theme.colors.mainBg};
 `;
 
 export const MainBlock = styled.div`
@@ -20,6 +20,7 @@ export const MainBlock = styled.div`
 export const MainContent = styled.div`
   width: 100%;
   display: flex;
+  justify-content: center;
 
   @media screen and (max-width: 1200px) {
     display: block;

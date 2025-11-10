@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const HeaderStyled = styled.header`
   width: 100%;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: ${props => props.theme.colors.cardBg};
 `;
 
 export const HeaderBlock = styled.div`
@@ -41,7 +41,7 @@ export const HeaderBtnMainNew = styled.button`
   width: 178px;
   height: 30px;
   border-radius: 4px;
-  background-color: #565eef;
+  background-color: ${props => props.theme.colors.primary};
   color: #ffffff;
   border: none;
   font-size: 14px;
@@ -50,7 +50,7 @@ export const HeaderBtnMainNew = styled.button`
   margin-right: 20px;
 
   &:hover {
-    background-color: #33399b;
+    background-color: ${props => props.theme.colors.hover};
   }
 
   a {
@@ -66,7 +66,7 @@ export const HeaderUser = styled.a`
   justify-content: center;
   font-size: 14px;
   line-height: 20px;
-  color: #565eef;
+  color: ${props => props.theme.colors.text};
 
   &::after {
     content: '';
@@ -74,19 +74,19 @@ export const HeaderUser = styled.a`
     width: 6px;
     height: 6px;
     border-radius: 1px;
-    border-left: 1.9px solid #565eef;
-    border-bottom: 1.9px solid #565eef;
+    border-left: 1.9px solid ${props => props.theme.colors.text};
+    border-bottom: 1.9px solid ${props => props.theme.colors.text};
     transform: rotate(-45deg);
     margin: -6px 0 0 5px;
     padding: 0;
   }
 
   &:hover {
-    color: #33399b;
+    color: ${props => props.theme.colors.primary};
 
     &::after {
-      border-left-color: #33399b;
-      border-bottom-color: #33399b;
+      border-left-color: ${props => props.theme.colors.primary};
+      border-bottom-color: ${props => props.theme.colors.primary};
     }
   }
 `;
@@ -98,8 +98,8 @@ export const HeaderPopUserSet = styled.div`
   width: 213px;
   height: 205px;
   border-radius: 10px;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
-  background: #fff;
+  border: 0.7px solid ${props => props.theme.colors.border};
+  background: ${props => props.theme.colors.cardBg};
   box-shadow: 0 10px 39px 0 rgba(26, 56, 101, 0.21);
   padding: 34px;
   text-align: center;
@@ -107,7 +107,7 @@ export const HeaderPopUserSet = styled.div`
 `;
 
 export const PopUserSetName = styled.p`
-  color: #000;
+  color: ${props => props.theme.colors.text};
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
@@ -116,7 +116,7 @@ export const PopUserSetName = styled.p`
 `;
 
 export const PopUserSetMail = styled.p`
-  color: #94a6be;
+  color: ${props => props.theme.colors.textSecondary};
   font-size: 14px;
   line-height: 21px;
   letter-spacing: -0.14px;
@@ -130,7 +130,7 @@ export const PopUserSetTheme = styled.div`
   margin-bottom: 30px;
 
   p {
-    color: #000;
+    color: ${props => props.theme.colors.text};
     font-size: 14px;
     line-height: 21px;
     letter-spacing: -0.14px;
@@ -169,12 +169,12 @@ export const PopUserSetButton = styled.button`
   width: 72px;
   height: 30px;
   background: transparent;
-  color: #565eef;
+  color: ${props => props.theme.colors.primary};
   border-radius: 4px;
-  border: 1px solid #565eef;
+  border: 1px solid ${props => props.theme.colors.primary};
 
   &:hover {
-    background-color: #33399b;
+    background-color: ${props => props.theme.colors.hover};
     color: #ffffff;
 
     span {
@@ -185,6 +185,6 @@ export const PopUserSetButton = styled.button`
   a {
     width: 72px;
     height: 30px;
-    color: #565eef;
+    color: ${props => props.theme.colors.primary};
   }
 `;

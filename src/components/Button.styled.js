@@ -2,19 +2,28 @@ import styled from 'styled-components';
 
 export const BtnBor = styled.button`
   border-radius: 4px;
-  border: 0.7px solid #565eef;
+  border: 0.7px solid ${props => props.theme.colors.primary};
   outline: none;
   background: transparent;
-  color: #565eef;
+  color: ${props => props.theme.colors.primary};
 
   a {
-    color: #565eef;
+    color: ${props => props.theme.colors.primary};
+  }
+
+  &:hover {
+    background-color: ${props => props.theme.colors.primary};
+    color: #ffffff;
+
+    a {
+      color: #ffffff;
+    }
   }
 `;
 
 export const BtnBg = styled.button`
   border-radius: 4px;
-  background: #565eef;
+  background: ${props => props.theme.colors.primary};
   border: none;
   outline: none;
   color: #ffffff;

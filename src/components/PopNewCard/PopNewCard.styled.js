@@ -16,8 +16,9 @@ export const PopNewCardMain = styled.div`
     props.$isActive &&
     css`
       display: flex;
-    `} @media screen and (
-    max-width: 660px) {
+    `}
+
+  @media screen and (max-width: 660px) {
     top: 70px;
   }
 `;
@@ -41,12 +42,12 @@ export const PopNewCardContainer = styled.div`
 export const PopNewCardBlock = styled.div`
   display: block;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: ${props => props.theme.colors.cardBg};
   max-width: 630px;
   width: 100%;
   padding: 40px 30px 48px;
   border-radius: 10px;
-  border: 0.7px solid #d4dbe5;
+  border: 0.7px solid ${props => props.theme.colors.border};
   position: relative;
 
   @media screen and (max-width: 660px) {
@@ -60,7 +61,7 @@ export const PopNewCardContent = styled.div`
 `;
 
 export const PopNewCardTitle = styled.h3`
-  color: #000;
+  color: ${props => props.theme.colors.text};
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
@@ -71,11 +72,11 @@ export const PopNewCardClose = styled.a`
   position: absolute;
   top: 20px;
   right: 30px;
-  color: #94a6be;
+  color: ${props => props.theme.colors.textSecondary};
   cursor: pointer;
 
   &:hover {
-    color: #000000;
+    color: ${props => props.theme.colors.text};
   }
 `;
 
@@ -95,7 +96,7 @@ export const PopNewCardCategories = styled.div`
 
 export const CategoriesP = styled.p`
   margin-bottom: 14px;
-  color: #000;
+  color: ${props => props.theme.colors.text};
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
@@ -137,7 +138,7 @@ export const CategoriesThemeP = styled.p`
 export const FormNewCreate = styled.button`
   width: 132px;
   height: 30px;
-  background-color: #565eef;
+  background-color: ${props => props.theme.colors.primary};
   border-radius: 4px;
   border: 0;
   outline: none;
@@ -154,7 +155,7 @@ export const FormNewCreate = styled.button`
 `;
 
 export const Subttl = styled.p`
-  color: #000;
+  color: ${props => props.theme.colors.text};
   font-size: 14px;
   font-weight: 600;
   line-height: 1;

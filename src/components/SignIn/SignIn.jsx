@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
+import { showSuccess, showError } from '../../utils/toast';
 import {
   ContainerSignin,
   Modal,
@@ -20,7 +21,6 @@ import {
 export const SignIn = () => {
   const [loginValue, setLogin] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
   const navigate = useNavigate();
   const { login: authLogin } = useAuth();
 
@@ -29,15 +29,16 @@ export const SignIn = () => {
     const trimmedLogin = loginValue.trim();
     const trimmedPassword = password.trim();
     if (!trimmedLogin || !trimmedPassword) {
-      setError('Поле не может быть пустым или содержать только пробелы');
+      showError('Поле не может быть пустым или содержать только пробелы');
       return;
     }
     try {
       const response = await login(trimmedLogin, trimmedPassword);
       authLogin(response.user);
+      showSuccess('Вход выполнен успешно!');
       navigate('/');
     } catch (err) {
-      setError(err.message);
+      showError(err.message);
     }
   };
 
@@ -50,7 +51,6 @@ export const SignIn = () => {
               <ModalTtlH2>Вход</ModalTtlH2>
             </ModalTtl>
             <ModalFormLogin id="formLogIn" onSubmit={handleSubmit}>
-              {error && <p style={{ color: 'red' }}>{error}</p>}
               <ModalInput
                 type="text"
                 name="login"

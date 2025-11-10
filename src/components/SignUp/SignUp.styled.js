@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   height: 100%;
   overflow-x: auto;
   overflow-y: scroll;
-  background-color: #eaeef6;
+  background-color: ${props => props.theme.colors.mainBg};
 `;
 
 export const ContainerSignup = styled.div`
@@ -29,12 +29,12 @@ export const Modal = styled.div`
 export const ModalBlock = styled.div`
   display: block;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: ${props => props.theme.colors.cardBg};
   max-width: 368px;
   width: 100%;
   padding: 50px 60px;
   border-radius: 10px;
-  border: 0.7px solid #d4dbe5;
+  border: 0.7px solid ${props => props.theme.colors.border};
   box-shadow: 0 4px 67px -12px rgba(0, 0, 0, 0.13);
 `;
 
@@ -44,7 +44,7 @@ export const ModalTtl = styled.div`
 `;
 
 export const ModalTtlH2 = styled.h2`
-  color: #000;
+  color: ${props => props.theme.colors.text};
   font-size: 20px;
   font-weight: 700;
   line-height: 30px;
@@ -60,10 +60,11 @@ export const ModalInput = styled.input`
   width: 100%;
   min-width: 100%;
   border-radius: 8px;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  border: 0.7px solid ${props => props.theme.colors.border};
   outline: none;
   padding: 10px 8px;
   background: transparent;
+  color: ${props => props.theme.colors.text};
 
   &::placeholder {
     font-family: 'Roboto', sans-serif;
@@ -71,7 +72,7 @@ export const ModalInput = styled.input`
     font-size: 14px;
     line-height: 21px;
     letter-spacing: -0.28px;
-    color: #94a6be;
+    color: ${props => props.theme.colors.textSecondary};
   }
 
   & {
@@ -82,7 +83,7 @@ export const ModalInput = styled.input`
 export const ModalBtnSignupEnt = styled.button`
   width: 100%;
   height: 30px;
-  background-color: #565eef;
+  background-color: ${props => props.theme.colors.primary};
   border-radius: 4px;
   margin: 20px 0 20px;
   border: none;
@@ -94,7 +95,7 @@ export const ModalBtnSignupEnt = styled.button`
   letter-spacing: -0.28px;
 
   &:hover {
-    background-color: #33399b;
+    background-color: ${props => props.theme.colors.hover};
   }
 `;
 
@@ -103,7 +104,7 @@ export const ModalFormGroup = styled.div`
 `;
 
 export const ModalFormGroupP = styled.p`
-  color: #94a6be66;
+  color: ${props => props.theme.colors.textSecondary};
   font-size: 14px;
   font-weight: 400;
   line-height: 150%;
@@ -111,7 +112,7 @@ export const ModalFormGroupP = styled.p`
 `;
 
 export const ModalFormGroupA = styled.a`
-  color: #94a6be66;
+  color: ${props => props.theme.colors.primary};
   text-decoration: underline;
 
   &:hover {
