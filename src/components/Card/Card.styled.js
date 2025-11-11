@@ -9,7 +9,7 @@ export const CardsItem = styled.div`
 export const CardsCard = styled.div`
   width: 220px;
   height: 130px;
-  background-color: #ffffff;
+  background-color: ${props => props.theme.colors.cardBg};
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@ export const CardsCard = styled.div`
   @media screen and (max-width: 1200px) {
     width: 220px;
     height: 130px;
-    background-color: #ffffff;
+    background-color: ${props => props.theme.colors.cardBg};
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -103,7 +103,7 @@ export const CardTitle = styled.h3`
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
-  color: #000000;
+  color: ${props => props.theme.colors.text};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

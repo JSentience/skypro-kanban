@@ -16,11 +16,13 @@ import {
   PopUserSetTheme,
 } from './Header.styled';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
 
 export const Header = ({ onLogout, user }) => {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [logOut, setLogOut] = useState(false);
   const [popNewCard, setPopNewCard] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const navigate = useNavigate();
 
@@ -62,16 +64,19 @@ export const Header = ({ onLogout, user }) => {
       <HeaderStyled>
         <Container>
           <HeaderBlock>
-            <HeaderLogo className="_show _light" data-header-logo>
-              <a href="" target="_self">
-                <img src="/images/logo.png" alt="logo" />
-              </a>
-            </HeaderLogo>
-            <HeaderLogo className="_dark" data-header-logo>
-              <Link to="/" target="_self">
-                <img src="/images/logo_dark.png" alt="logo" />
-              </Link>
-            </HeaderLogo>
+            {theme === 'light' ? (
+              <HeaderLogo className="_show _light" data-header-logo>
+                <Link to="/">
+                  <img src="/images/logo.png" alt="logo" />
+                </Link>
+              </HeaderLogo>
+            ) : (
+              <HeaderLogo className="_dark" data-header-logo>
+                <Link to="/">
+                  <img src="/images/logo_dark.png" alt="logo" />
+                </Link>
+              </HeaderLogo>
+            )}
             <HeaderNav>
               <HeaderBtnMainNew onClick={handleClickNew}>
                 Создать новую задачу
@@ -93,11 +98,13 @@ export const Header = ({ onLogout, user }) => {
                     {user?.login || 'email@example.com'}
                   </PopUserSetMail>
                   <PopUserSetTheme>
-                    <p>Темная тема</p>
+                    <p>{theme === 'light' ? 'Темная тема' : 'Светлая тема'}</p>
                     <input
                       type="checkbox"
                       className="checkbox"
                       name="checkbox"
+                      checked={theme === 'dark'}
+                      onChange={toggleTheme}
                     />
                   </PopUserSetTheme>
                   <PopUserSetButton

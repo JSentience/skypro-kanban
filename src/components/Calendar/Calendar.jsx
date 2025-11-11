@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   CalendarBlock,
   CalendarCell,
@@ -84,9 +84,13 @@ const getDaysInMonth = (date) => {
   return days;
 };
 
-const Calendar = ({ onDateSelect }) => {
+const Calendar = ({ onDateSelect, propSelectedDate }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
+
+  useEffect(() => {
+    setSelectedDate(propSelectedDate || null);
+  }, [propSelectedDate]);
 
   const handlePrevMonth = () => {
     setCurrentDate(

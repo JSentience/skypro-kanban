@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { showError } from '../../utils/toast';
 import {
   FormNewArea,
   FormNewBlock,
@@ -7,18 +8,23 @@ import {
   Subttl,
 } from './NewCardForm.styled';
 
-const NewCardForm = ({ onSubmit, error }) => {
+const NewCardForm = ({ onSubmit }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ title, description });
+    const trimmedTitle = title.trim();
+    const trimmedDescription = description.trim();
+    if (!trimmedTitle) {
+      showError('Название задачи не может быть пустым или содержать только пробелы');
+      return;
+    }
+    onSubmit({ title: trimmedTitle, description: trimmedDescription });
   };
 
   return (
     <PopNewCardForm id="formNewCard" onSubmit={handleSubmit}>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
       <FormNewBlock>
         <Subttl>Название задачи</Subttl>
         <FormNewInput
