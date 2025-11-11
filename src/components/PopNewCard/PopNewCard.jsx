@@ -21,6 +21,7 @@ import {
 
 const PopNewCard = ({ style, onClose, onTaskCreated }) => {
   const [selectedTopic, setSelectedTopic] = useState('Web Design');
+  const [selectedDate, setSelectedDate] = useState(null);
   const { addTask } = useTasks();
 
   const handleSubmit = async (formData) => {
@@ -30,7 +31,9 @@ const PopNewCard = ({ style, onClose, onTaskCreated }) => {
         topic: selectedTopic,
         description: formData.description || '',
         status: 'Без статуса',
-        date: new Date().toISOString(),
+        date: selectedDate
+          ? selectedDate.toISOString()
+          : new Date().toISOString(),
       };
       await addTask(taskData);
       showSuccess('Задача успешно создана!');
@@ -62,7 +65,10 @@ const PopNewCard = ({ style, onClose, onTaskCreated }) => {
             </PopNewCardClose>
             <PopNewCardWrap>
               <NewCardForm onSubmit={handleSubmit} />
-              <Calendar />
+              <Calendar
+                onDateSelect={setSelectedDate}
+                selectedDate={selectedDate}
+              />
             </PopNewCardWrap>
             <PopNewCardCategories>
               <CategoriesP>Категория</CategoriesP>

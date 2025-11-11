@@ -42,6 +42,7 @@ const PopBrowse = ({ onClose, isActive, id }) => {
   const [editedDescription, setEditedDescription] = useState('');
   const [editedTopic, setEditedTopic] = useState('');
   const [editedStatus, setEditedStatus] = useState('');
+  const [selectedDate, setSelectedDate] = useState(null);
   const [isDeleted, setIsDeleted] = useState(false);
   const {
     tasks,
@@ -59,6 +60,7 @@ const PopBrowse = ({ onClose, isActive, id }) => {
         setEditedDescription(localTask.description);
         setEditedTopic(localTask.topic);
         setEditedStatus(localTask.status);
+        setSelectedDate(localTask.date ? new Date(localTask.date) : null);
       } else {
         const data = await fetchTaskById(id);
         setTask(data.task);
@@ -78,7 +80,7 @@ const PopBrowse = ({ onClose, isActive, id }) => {
   };
 
   const handleSave = async () => {
-    if (!editedTitle.trim()) {
+    if (!editedTitle.trim() || !editedTopic || !selectedDate) {
       showError('Название задачи не может быть пустым');
       return;
     }
@@ -88,7 +90,7 @@ const PopBrowse = ({ onClose, isActive, id }) => {
       description: editedDescription,
       topic: editedTopic,
       status: editedStatus,
-      date: task.date,
+      date: selectedDate.toISOString(),
     };
     await updateTaskContext(updatedTask);
     setTask((prev) => ({
@@ -107,6 +109,7 @@ const PopBrowse = ({ onClose, isActive, id }) => {
     setEditedDescription(task.description);
     setEditedTopic(task.topic);
     setEditedStatus(task.status);
+    setSelectedDate(task.date ? new Date(task.date) : null);
     setEditMode(false);
   };
 
@@ -262,7 +265,10 @@ const PopBrowse = ({ onClose, isActive, id }) => {
                   />
                 </FormBrowseBlock>
               </PopBrowseForm>
-              <Calendar />
+              <Calendar
+                onDateSelect={setSelectedDate}
+                selectedDate={selectedDate}
+              />
             </PopBrowseWrap>
             {!editMode && (
               <PopBrowseBtnBrowse>
