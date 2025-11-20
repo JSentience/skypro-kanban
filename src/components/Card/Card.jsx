@@ -10,9 +10,26 @@ import {
   CardTheme,
   CardTitle,
 } from './Card.styled';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
 export const Card = ({ theme, title, date, id }) => {
   const navigate = useNavigate();
+
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : 1,
+  };
 
   const themeColors = {
     'Web Design': { bg: '#ffe4c2', text: '#ff6d00' },
@@ -23,6 +40,7 @@ export const Card = ({ theme, title, date, id }) => {
   const handleCardClick = (e) => {
     e.preventDefault();
   };
+
   const handleCardClickPopBrowse = (e) => {
     e.preventDefault();
     navigate(`/pop-browse/${id}`, { state: { theme } });
@@ -33,7 +51,7 @@ export const Card = ({ theme, title, date, id }) => {
   const displayTitle = title.length > 20 ? title.slice(0, 20) + '...' : title;
 
   return (
-    <CardsItem>
+    <CardsItem ref={setNodeRef} style={style}>
       <CardsCard>
         <CardGroup>
           <CardTheme
@@ -50,7 +68,7 @@ export const Card = ({ theme, title, date, id }) => {
         </CardGroup>
         <CardContent>
           <CardLink onClick={handleCardClick}>
-            <CardTitle>{displayTitle}</CardTitle>
+            <CardTitle {...attributes} {...listeners}>{displayTitle}</CardTitle>
           </CardLink>
           <CardDate>
             <svg

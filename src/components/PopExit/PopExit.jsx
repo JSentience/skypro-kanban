@@ -19,6 +19,14 @@ const PopExit = ({ style, onClose, onLogout }) => {
     }
   };
 
+  const handleClose = (e) => {
+    e.preventDefault();
+    navigate('/', { replace: true });
+    if (onClose) {
+      onClose();
+    }
+  };
+
   return (
     <PopExitStyled style={style}>
       <PopExitContainer>
@@ -31,7 +39,7 @@ const PopExit = ({ style, onClose, onLogout }) => {
               <PopExitExitYes onClick={handleLogout}>
                 <span>Да, выйти</span>
               </PopExitExitYes>
-              <PopExitExitNo id="exitNo" onClick={onClose}>
+              <PopExitExitNo id="exitNo" onClick={handleClose}>
                 <span>Нет, остаться</span>
               </PopExitExitNo>
             </PopExitFormGroup>

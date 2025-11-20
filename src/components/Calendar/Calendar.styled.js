@@ -17,6 +17,7 @@ export const CalendarTtl = styled.p`
   line-height: 1;
   margin-bottom: 14px;
   padding: 0 7px;
+  color: ${(props) => props.theme.colors.text};
 `;
 
 export const CalendarBlock = styled.div`
@@ -24,7 +25,7 @@ export const CalendarBlock = styled.div`
 `;
 
 export const CalendarMonth = styled.div`
-  color: #94a6be;
+  color: ${(props) => props.theme.colors.text};
   font-size: 14px;
   line-height: 25px;
   font-weight: 600;

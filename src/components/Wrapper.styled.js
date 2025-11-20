@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   max-width: 100%;
   width: 100vw;
   min-height: 100vh;
-  background-color: #f1f1f1;
+  background-color: ${props => props.theme.colors.background};
 `;
 
 export const Container = styled.div`

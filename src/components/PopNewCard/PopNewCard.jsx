@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Calendar from '../Calendar/Calendar';
 import NewCardForm from '../NewCardForm/NewCardForm';
 import { useTasks } from '../../context/TaskContext';
+import { showSuccess, showError } from '../../utils/toast';
 import {
   CategoriesP,
   CategoriesTheme,
@@ -20,7 +21,7 @@ import {
 
 const PopNewCard = ({ style, onClose, onTaskCreated }) => {
   const [selectedTopic, setSelectedTopic] = useState('Web Design');
-  const [error, setError] = useState('');
+  const [selectedDate, setSelectedDate] = useState(null);
   const { addTask } = useTasks();
 
   const handleSubmit = async (formData) => {
@@ -30,13 +31,16 @@ const PopNewCard = ({ style, onClose, onTaskCreated }) => {
         topic: selectedTopic,
         description: formData.description || '',
         status: 'Без статуса',
-        date: new Date().toISOString(),
+        date: selectedDate
+          ? selectedDate.toISOString()
+          : new Date().toISOString(),
       };
       await addTask(taskData);
+      showSuccess('Задача успешно создана!');
       onTaskCreated();
       onClose();
     } catch (err) {
-      setError(err.message);
+      showError(err.message);
     }
   };
 
@@ -60,8 +64,11 @@ const PopNewCard = ({ style, onClose, onTaskCreated }) => {
               &#10006;
             </PopNewCardClose>
             <PopNewCardWrap>
-              <NewCardForm onSubmit={handleSubmit} error={error} />
-              <Calendar />
+              <NewCardForm onSubmit={handleSubmit} />
+              <Calendar
+                onDateSelect={setSelectedDate}
+                selectedDate={selectedDate}
+              />
             </PopNewCardWrap>
             <PopNewCardCategories>
               <CategoriesP>Категория</CategoriesP>

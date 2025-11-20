@@ -20,6 +20,7 @@ export const TaskProvider = ({ children }) => {
 
   useEffect(() => {
     const loadTasks = async () => {
+      setLoading(true);
       try {
         const data = await fetchTasks();
         setTasks(data.tasks || []);

@@ -4,7 +4,7 @@ import PopExit from '../components/PopExit/PopExit';
 export const PopExitPage = ({ setIsAuth }) => {
   const navigate = useNavigate();
   const handleClose = () => {
-    navigate('/');
+    navigate('/', { replace: true });
   };
 
   const handleLogout = () => {

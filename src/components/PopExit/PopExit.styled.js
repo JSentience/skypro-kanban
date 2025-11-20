@@ -31,12 +31,12 @@ export const PopExitContainer = styled.div`
 export const PopExitBlock = styled.div`
   display: block;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: ${props => props.theme.colors.cardBg};
   max-width: 370px;
   width: 100%;
   padding: 50px 60px;
   border-radius: 10px;
-  border: 0.7px solid #d4dbe5;
+  border: 0.7px solid ${props => props.theme.colors.border};
   box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
 
   @media only screen and (max-width: 375px) {
@@ -52,6 +52,7 @@ export const PopExitTtl = styled.div`
     line-height: 30px;
     letter-spacing: -0.4px;
     margin-bottom: 20px;
+    color: ${props => props.theme.colors.text};
   }
 `;
 
@@ -69,7 +70,7 @@ export const PopExitFormGroup = styled.div`
 export const PopExitExitYes = styled.button`
   width: 153px;
   height: 30px;
-  background-color: #565eef;
+  background-color: ${props => props.theme.colors.primary};
   border-radius: 4px;
   border: none;
   outline: none;
@@ -93,7 +94,7 @@ export const PopExitExitYes = styled.button`
   }
 
   &:hover {
-    background-color: #33399b;
+    background-color: ${props => props.theme.colors.hover};
   }
 
   @media only screen and (max-width: 375px) {
@@ -109,7 +110,7 @@ export const PopExitExitNo = styled.button`
   height: 30px;
   background-color: transparent;
   border-radius: 4px;
-  border: 0.7px solid #565eef;
+  border: 0.7px solid ${props => props.theme.colors.primary};
   outline: none;
   display: flex;
   align-items: center;
@@ -123,14 +124,14 @@ export const PopExitExitNo = styled.button`
   span {
     width: 100%;
     height: 100%;
-    color: #565eef;
+    color: ${props => props.theme.colors.primary};
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   &:hover {
-    background-color: #33399b;
+    background-color: ${props => props.theme.colors.hover};
     color: #ffffff;
 
     span {

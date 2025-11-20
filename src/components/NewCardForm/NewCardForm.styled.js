@@ -16,8 +16,9 @@ export const FormNewInput = styled.input`
   width: 100%;
   outline: none;
   padding: 14px;
+  color: ${(props) => props.theme.colors.text};
   background: transparent;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  border: 0.7px solid ${(props) => props.theme.colors.border};
   border-radius: 8px;
   font-size: 14px;
   line-height: 1;
@@ -28,7 +29,7 @@ export const FormNewInput = styled.input`
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94a6be;
+    color: ${(props) => props.theme.colors.textSecondary};
     letter-spacing: -0.14px;
   }
 `;
@@ -37,9 +38,10 @@ export const FormNewArea = styled.textarea`
   max-width: 370px;
   width: 100%;
   outline: none;
+  color: ${(props) => props.theme.colors.text};
   padding: 14px;
   background: transparent;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  border: 0.7px solid ${(props) => props.theme.colors.border};
   border-radius: 8px;
   font-size: 14px;
   line-height: 1;
@@ -51,7 +53,7 @@ export const FormNewArea = styled.textarea`
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94a6be;
+    color: ${(props) => props.theme.colors.textSecondary};
     letter-spacing: -0.14px;
   }
 
@@ -62,7 +64,7 @@ export const FormNewArea = styled.textarea`
 `;
 
 export const Subttl = styled.p`
-  color: #000;
+  color: ${(props) => props.theme.colors.text};
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
